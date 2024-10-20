@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="portrait" name="screen-orientation">
+    <meta content="portrait" name="x5-orientation">
+    <meta content="webkit|ie-comp" name="renderer">
+    <meta content="no" name="msapplication-tap-highlight">
+    <meta content="width=device-width,viewport-fit=cover,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
+          name="viewport"/>
+    <meta content="0" http-equiv="Expires">
+    <meta content="no-cache" http-equiv="Pragma">
+    <meta content="no-cache" http-equiv="Cache-Control">
+    <meta content="no-cache" http-equiv="Cache">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <link href="favicon.ico" rel="icon">
+    <link href="assets/css/index.css" rel="stylesheet">
+    <title>赛盾vpn</title>
+</head>
+<body style="background: url('assets/imgs/bg.png') no-repeat;background-size:cover;overflow: scroll;;height: 100vh;">
+<div id="app" style="height: 100vh;overflow: hidden;width: 100%;position: relative">
+
+    <div class="home">
+        <img alt="" class="pic1" src="assets/imgs/pic1.png">
+        <div class="title" style="top: 24px;">
+            全球账号专卖
+        </div>
+        <div style="color: #7747FF;top: 70px;position: absolute;font-size: 18px;left: 14px;
+        font-weight: bold;">24小时全天自动发货</div>
+        <div style="color: #ffffff;top: 100px;position: absolute;font-size: 13px;left: 14px;width: 60%;">
+        	自助下单平台，需要什么选择对应得标题进行购买付款，付款完毕后返回网页就会显示账号密码信息。您也可以在邮箱中或者网页查单页面查看账号密码信息
+        </div>
+        <div style="color: #ff0000;top: 180px;position: absolute;font-size: 15px;left: 14px;">
+        	购买过程中有任何问题，请联系客服帮助您!
+        </div>
+        <div class="box">
+            <div :class="productType==1?'acItem':'item'" @click="changeAccountMenu(1)">
+                <img alt="" class="img" src="assets/imgs/icon1.png">
+                <div style="font-size: 12px;margin-top: 6px;text-align: center">苹果账号</div>
+            </div>
+			<div :class="productType==2?'acItem':'item'" @click="changeAccountMenu(2)">
+			    <img alt="" class="img" src="assets/imgs/icon3.png">
+			    <div style="font-size: 12px;margin-top: 6px;text-align: center">instagram</div>
+			</div>
+			<div :class="productType==3?'acItem':'item'" @click="changeAccountMenu(3)">
+			    <img alt="" class="img" src="assets/imgs/icon5.png">
+			    <div style="font-size: 12px;margin-top: 6px;text-align: center">Facebook</div>
+			</div>
+            <div :class="productType==4?'acItem':'item'" @click="changeAccountMenu(4)">
+                <img alt="" class="img" src="assets/imgs/icon4.png">
+                <div style="font-size: 12px;margin-top: 6px;text-align: center">TikTok</div>
+            </div>
+			<div :class="productType==5?'acItem':'item'" @click="changeAccountMenu(5)">
+			    <img alt="" class="img" src="assets/imgs/icon2.png">
+			    <div style="font-size: 12px;margin-top: 6px;text-align: center">推特账号</div>
+			</div>
+            <div :class="productType==6?'acItem':'item'" @click="changeAccountMenu(6)">
+                <img alt="" class="img" src="assets/imgs/icon6.png">
+                <div style="font-size: 12px;margin-top: 6px;text-align: center">谷歌账号</div>
+            </div>
+            <div :class="productType==7?'acItem':'item'" @click="changeAccountMenu(7)">
+                <img alt="" class="img" src="assets/imgs/icon7.png">
+                <div style="font-size: 12px;margin-top: 6px;text-align: center">Youtube</div>
+            </div>
+            <div style="width: 76px;height: 0">
+            </div>
+            <div style="width: 76px;height: 0"></div>
+            <div style="width: 76px;height: 0"></div>
+        </div>
+        <div class="list" style="margin-top: 400px;">
+            <div v-if="productType==1" :key="i" class="li" v-for="(v,i) in sellList">
+                <div class="left">
+                    <div class="po1" style="font-weight: bolder">{{v.title}}地区</div>
+                    <div class="po2">带密保·可改密</div>
+                </div>
+                <div class="right">
+                    <div class="txt1">【{{v.title}}】苹果账号|送教程</div>
+                    <div class="txt2">老号，稳定使用</div>
+                    <div class="txt3">
+                        <div class="p1">{{v.money}}</div>
+                        <div @click="buy(v)" class="p2" v-if="v.buy===true">立即抢购</div>
+                        <div class="p2" style="background-color: gray!important;color: white" v-if="v.buy===false">
+                            已售完
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div v-if="productType==2" :key="i" class="li" v-for="(v,i) in insList">
+			    <div class="left" style="width: 113px;height: 113px;border-radius: 8px;position: relative;background-size: 113px 113px;
+				background-repeat: no-repeat;background-image: url('assets/imgs/inspay.png');">
+			    </div>
+			    <div class="right">
+			        <div class="txt1">【INS新号】Instagram精品|送教程</div>
+			        <div class="txt2">自动发货 官方正品 安全保障</div>
+			        <div class="txt3">
+			            <div class="p1">{{v.money}}</div>
+			            <div @click="buy(v)" class="p2">立即抢购</div>
+			        </div>
+			    </div>
+			</div>
+			<div v-if="productType==3" :key="i" class="li" v-for="(v,i) in facList">
+			    <div class="left" style="width: 113px;height: 113px;border-radius: 8px;position: relative;background-size: 113px 113px;
+				background-repeat: no-repeat;background-image: url('assets/imgs/facpay.png');">
+			    </div>
+			    <div class="right">
+			        <div class="txt1">【脸书账号】Facebook| 高质量 送教程</div>
+			        <div class="txt2">自动发货 官方正品 安全保障</div>
+			        <div class="txt3">
+			            <div class="p1">{{v.money}}</div>
+			            <div @click="buy(v)" class="p2">立即抢购</div>
+			        </div>
+			    </div>
+			</div>
+			<div v-if="productType==4" :key="i" class="li" v-for="(v,i) in tikList">
+			    <div class="left" style="width: 113px;height: 113px;border-radius: 8px;position: relative;background-size: 113px 113px;
+				background-repeat: no-repeat;background-image: url('assets/imgs/tikpay.png');">
+			    </div>
+			    <div class="right">
+			        <div class="txt1">Tiktok(账号)高质量|安全稳定 送教程</div>
+			        <div class="txt2">自动发货 官方正品 安全保障</div>
+			        <div class="txt3">
+			            <div class="p1">{{v.money}}</div>
+			            <div @click="buy(v)" class="p2">立即抢购</div>
+			        </div>
+			    </div>
+			</div>
+			<div v-if="productType==5" :key="i" class="li" v-for="(v,i) in xList">
+			    <div class="left" style="width: 113px;height: 113px;border-radius: 8px;position: relative;background-size: 113px 113px;
+				background-repeat: no-repeat;background-image: url('assets/imgs/xpay.png');">
+			    </div>
+			    <div class="right">
+			        <div class="txt1" style="font-size: 13px;">【推X成品号】Twitter|高质量|安全稳定|带2fa</div>
+			        <div class="txt2">自动发货 官方正品 安全保障</div>
+			        <div class="txt3">
+			            <div class="p1">{{v.money}}</div>
+			            <div @click="buy(v)" class="p2">立即抢购</div>
+			        </div>
+			    </div>
+			</div>
+        </div>
+    </div>
+    <div class="toBuy" v-if="showBuy">
+        <div class="sBox">
+            <div class="title">选择交易方式</div>
+            <div class="close">
+                <img @click="closeShow" alt="" src="assets/imgs/close.png" style="width: 12px">
+            </div>
+            <div class="line"></div>
+            <div @click="changeChooseType(1)" class="title2">
+                <img alt="" class="img" src="assets/imgs/ali.png">
+                <div class="txt">支付宝</div>
+                <img alt="" class="get" src="assets/imgs/get.png" v-if="curPay==1">
+                <img alt="" class="get" src="assets/imgs/nono.png" v-if="curPay!==1">
+            </div>
+            <div class="line"></div>
+            <div @click="changeChooseType(2)" class="title2">
+                <img alt="" class="img" src="assets/imgs/vx.png">
+                <div class="txt">微信</div>
+                <img alt="" class="get" src="assets/imgs/get.png" v-if="curPay==2">
+                <img alt="" class="get" src="assets/imgs/nono.png" v-if="curPay!==2">
+            </div>
+            <div class="line"></div>
+            <div class="sTxt" style="margin-top: 10px;">邮箱：自动发货到该邮箱，请正确输入</div>
+            <input class="input" placeholder="请输入正确的邮箱地址" type="text" v-model="email">
+            <div @click="pay" class="btm">
+                立即支付
+            </div>
+        </div>
+    </div>
+	<div style="position: fixed;right: 0;top: 40%;"><img @click="gotoKf" src="assets/imgs/kf.png" style="width: 30px;height: 120px;"/></div>
+    <form :action="GoodPayUrl" id="goodPay" method="post" style="display: none;">
+        <input id="goodPay-pid" name="pid"/>
+        <input id="goodPay-type" name="type"/>
+        <input id="goodPay-out_trade_no" name="out_trade_no"/>
+        <input id="goodPay-notify_url" name="notify_url"/>
+        <input id="goodPay-return_url" name="return_url"/>
+        <input id="goodPay-name" name="name"/>
+        <input id="goodPay-money" name="money"/>
+
+        <input id="goodPay-sign" name="sign"/>
+        <input id="goodPay-sign_type" name="sign_type"/>
+    </form>
+</div>
+
+<!-- <script src="https://assets.salesmartly.com/js/project_94502_99275_1721809834.js"></script> -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/axios.js"></script>
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/qs.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            showBuy: false,
+            orderNo: '',
+			productType: 1,
+            sellList: [{
+                id: 1,
+                country: "HK",
+                name: "港区ID",
+                title: '港区',
+                money: "￥10.00",
+                selected: 1,
+                buy: true
+            },
+			{
+				id: 2,
+				country: "USA",
+				name: "美区ID",
+				title: '美区',
+				money: "￥10.00",
+				selected: 0,
+				buy: true
+			},
+			{
+				id: 3,
+				country: "KR",
+				name: "韩区ID",
+				title: '韩区',
+				money: "￥12.00",
+				selected: 0,
+				buy: true
+			},
+			{
+				id: 4,
+				country: "UK",
+				name: "英区ID",
+				title: '英区',
+				money: "￥12.00",
+				selected: 0,
+				buy: true
+			},
+			{
+				id: 5,
+				country: "JPN",
+				name: "日本区ID",
+				title: '日本',
+				money: "￥12.00",
+				selected: 0,
+				buy: true
+			}],
+			insList: [{
+			    id: 10,
+			    money: "￥18.00",
+			    selected: 1,
+			}],
+			facList: [{
+			    id: 11,
+			    money: "￥18.00",
+			    selected: 1,
+			}],
+			tikList: [{
+			    id: 12,
+			    money: "￥20.00",
+			    selected: 1,
+			}],
+			xList: [{
+			    id: 13,
+			    money: "￥20.00",
+			    selected: 1,
+			}],
+            curPid: 1,
+            curPay: 1,
+            email: '',
+            GoodPayUrl: "",
+			token: localStorage.getItem("token_id"),
+            webUrl : "http://" + document.domain + "/help/appstore-appidpay-chat.html",
+        },
+        mounted() {
+            this.getPayUrl()
+        },
+        methods: {
+			gotoKf() {
+				window.location.href = "https://chat.ssrchat.com/service/f2bm9cu"
+			},
+			changeAccountMenu(i) {
+				this.productType = i
+			},
+            pay: function () {
+                if (this.token == "" || this.token == undefined) {
+                    this.token = generateUUID()
+					localStorage.setItem("token_id",this.token)
+                }
+                if (this.curPay == 2) {
+                    this.goodPay()
+                } else {
+                    this.goodPay()
+                }
+            },
+			buy(item) {
+			    this.showBuy = true
+			    this.curPid = item.id
+			},
+            goodPay: function () {
+                var that = this
+                var data = new FormData();
+                data.append('pkg_id', this.curPid);
+                data.append('pay_type', this.curPay);
+                data.append('web_url', this.webUrl);
+                data.append('token_id', this.token);
+                data.append('email', this.email);
+                axios({
+                    method: 'post',
+                    url: api + '/vpn/appid_pay_good',
+                    data: data
+                })
+                    .then(function (response) {
+                        var data = response.data;
+                        if (data.code != 200) {
+                            alert(data.remark)
+                            return
+                        }
+                        var goodPay = data.result
+                        $("#goodPay-pid").val(goodPay.pid)
+                        $("#goodPay-type").val(goodPay.type)
+                        $("#goodPay-out_trade_no").val(goodPay.out_trade_no)
+                        $("#goodPay-notify_url").val(goodPay.notify_url)
+                        $("#goodPay-return_url").val(goodPay.return_url)
+                        $("#goodPay-name").val(goodPay.name)
+                        $("#goodPay-money").val(goodPay.money)
+                        $("#goodPay-sign").val(goodPay.sign)
+                        $("#goodPay-sign_type").val(goodPay.sign_type)
+                        $("#goodPay").submit()
+                    })
+            },
+            ybPay: function () {
+                var that = this
+                var data = new FormData();
+                data.append('pkg_id', this.curPid);
+                data.append('pay_type', 2);
+                data.append('web_url', this.webUrl);
+                data.append('token_id', this.token);
+                data.append('email', this.email);
+                axios({
+                    method: 'post',
+                    url: api + '/vpn/appid_pay_yb',
+                    data: data
+                })
+                    .then(function (response) {
+                        var data = response.data;
+                        if (data.code != 200) {
+                            alert(data.remark)
+                            return
+                        }
+                        window.location.href = data.result.codeUrl
+                    })
+            },
+            changeChooseType(val) {
+                this.curPay = val
+            },
+            closeShow() {
+                this.showBuy = false
+            },
+            async getPayUrl() {
+                let that = this
+                try {
+                    await axios({
+                        method: 'get',
+                        url: api + '/vpn/pkg/index',
+                        headers: {
+                            'Content-Type': "application/x-www-form-urlencoded",
+                        },
+                        data: {}
+                    }).then(res => {
+                        if (res.data.code === 200) {
+                            this.GoodPayUrl = res.data.result.good_pay_url
+                        }
+                    })
+                } catch (e) {
+                    alert(e);
+                }
+            },
+        },
+        created: function () {
+        }
+    })
+
+    function generateUUID() {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
+    }
+</script>
+</body>
+</html>
