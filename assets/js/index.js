@@ -26,7 +26,7 @@ gotoDownloadPage = function() {
 	return
 };
 gotoDownloadWinPage = function() {
-	window.location.href = "https://ws878.com/windows/saidun.msi"
+	window.location.href = "https://ws878.com/windows/exe/saidun.exe"
 };
 gotoDownloadGooglePlayPage = function() {
 	alert("您好，目前 谷歌商店 版本无法下载，正在紧急处理。真的很抱歉耽误了您！")
