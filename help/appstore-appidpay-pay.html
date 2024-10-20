@@ -115,11 +115,11 @@
 				<div style="color: #353535;font-size: 24px;flex: 3;text-align: left;margin-left: 10px;font-weight: bold;">支付宝</div>
 				<div style="flex: 1;"><img :src="curPay==1?'img/appstore-appidpay-chat/g-1.png':'img/appstore-appidpay-chat/g-0.png'" style="height: 26px;width: 26px;"/></div>
 			</div>
-			<div @click="selPayType(2)" :style="curPay==2?'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #337FF2;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;':'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #9e9e9e;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;'">
+			<!-- <div @click="selPayType(2)" :style="curPay==2?'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #337FF2;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;':'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #9e9e9e;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;'">
 				<div style="flex: 1;text-align: right;"><img src="img/appstore-appidpay-chat/weixin.png" style="height: 46px;width: 46px;"/></div>
 				<div style="color: #353535;font-size: 24px;flex: 3;text-align: left;margin-left: 10px;font-weight: bold;">微信</div>
 				<div style="flex: 1;"><img :src="curPay==2?'img/appstore-appidpay-chat/g-1.png':'img/appstore-appidpay-chat/g-0.png'" style="height: 26px;width: 26px;"/></div>
-			</div>
+			</div> -->
 			<div style="text-align: center;margin-top: 10px;">丢失的无法找回，购买成功后请记得及时保存哦</div>
 			<div style="display: flex;width: 90%;margin-left: 5%;background-color: #337FF2;height: 56px;
 			border-radius: 30px;justify-content: center;align-items: center;margin-top: 20px;" @click="pay()">
@@ -168,14 +168,14 @@
 							id: 1,
 							country: "HK",
 							name: "港区ID",
-							money: "￥10.00",
+							money: "￥12.00",
 							selected: 1,
 						},
 						{
 							id: 2,
 							country: "USA",
 							name: "美区ID",
-							money: "￥10.00",
+							money: "￥12.00",
 							selected: 0,
 						},
 						{
@@ -294,7 +294,7 @@
 							localStorage.setItem("token_id",this.token)
 						}
 						if (this.curPay == 2) {
-							this.ybPay()
+							this.goodPay()
 						}else {
 							this.goodPay()
 						}
