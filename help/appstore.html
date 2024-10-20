@@ -1,0 +1,207 @@
+<html lang="zh" class="ios iphone mobile portrait" data-dpr="1" style="font-size: 42.8px;">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
+		<title>赛盾VPN-下载教程</title>
+		<link href="css/index.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/9539.css">
+		<style>
+			.f2 {
+				font-size: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<div style="height: 80px;background-color: #337FF2;width: 100%;position: fixed;left: 0;top: 0;display: flex;align-items: center;">
+				<div style="display: flex;justify-content: left;align-items: center;flex: 4;margin-left: 20px;" @click="gotoIndex()">
+					<div><img src="../assets/img/logo.png" style="height: 40px;width: 40px;"/></div>
+					<div style="color: white;font-weight: bold;margin-left: 5px;font-size: 24px;">赛盾VPN</div>
+				</div>
+				<div style="color: white;font-size: 18px;flex: 1;" @click="gotoIndex()">主页</div>
+				<div style="display: flex;align-items: center;border: 1px solid white;border-radius: 13px;
+				justify-content: center;height: 26px;margin-right: 20px;width: 100px;flex: 2;" @click="gotoLoginPage()" v-if="!isLogin">
+					<img src="../assets/img/icon1.png" style="height: 16px;width: 16px;"/>
+					<div style="font-size: 16px;color: white;margin-left: 3px;">用户登录</div>
+				</div>
+				<div style="display: flex;align-items: center;border: 1px solid white;border-radius: 13px;
+				justify-content: center;height: 26px;margin-right: 20px;width: 100px;flex: 2;" @click="logout()" v-else>
+					<div style="font-size: 16px;color: white;margin-left: 3px;">退出登录</div>
+				</div>
+				<div @click="showMenu()" style="flex: 1;" v-if="selMenu=='sandian'"><img  src="../assets/img/sandian-1.png" style="width: 26px;height: 8px;"/></div>
+				<div @click="showMenu()" style="flex: 1;" v-else>
+					<img  src="../assets/img/sandian.png" style="width: 26px;height: 8px;"/>
+				</div>
+			</div>
+			<div v-show="isShowMenu" id="menu0" style="position: fixed;background-color: white;width: 130px;height: 180px;right: 3px;top: 83px;display: none;">
+				<div @click="gotoPayPage()" style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #337FF2;margin-top: 10px;">会员购买</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="gotoHelpPage()">常见问题</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="gotoLoginPage()">账号登录</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-bottom: 10px;">
+					<div>简体中文</div>
+					<div style="margin-left: 20px;"><img src="../assets/img/xiangyou.png" style="width: 10px;height: 10px;"/></div>
+				</div>
+			</div>
+			<div v-show="isShowLanguage" id="language" style="position: fixed;background-color: white;width: 130px;height: 130px;right: 136px;top: 213px;display: none;">
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-top: 5px;">English</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;">简体中文</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-bottom: 5px;">繁体中文</div>
+			</div>
+			<div style="position: fixed;right: 10px;bottom: 10px;"><img onclick="gotoKfLink()" src="../assets/img/kf.png" style="width:48px"/></div>
+			
+			<div itemscope="itemscope" itemtype="http://schema.org/SoftwareApplication" style="margin-top: 80px;">
+				<div data-v-390b037b="" class="help-container">
+					<header data-v-390b037b="">
+						<div>
+							<a data-v-390b037b="" href="../index.html" class="logo router-link-active">
+								<img data-v-390b037b="" src="img/logo.png" alt=""></a>
+							<h2 data-v-390b037b="">iOS 版本下载教程</h2>
+						</div>
+					</header>
+					<div data-v-390b037b="" class="main">
+						<h4 data-v-390b037b="" class="">如没有非中国大陆地区的 Apple ID 账号？</h4>
+						<button onclick="gotoMp4()" style="color: red; background-color: white;
+						border: 1px solid red; border-radius: 5px; height: 90px; width: 96%; margin-left: 2%;
+						 margin-top: 10px; font-size: 20px;display: flex;justify-content: center;align-items: center;">
+							<div style="flex: 4;">
+								<div>如何下载赛盾VPN</div>
+								<div>（新手下载必看视频）</div>
+							</div>
+							<div style="flex: 1;">
+								<div><img src="img/look.png" style="width: 60%;"/></div>
+							</div>
+						</button>
+						<div data-v-390b037b="" class="install-step">
+							<a data-v-390b037b="" href="appstore-approach-3.html" class="istep-item" style="display: flex;">
+								<div style="flex: 6;">
+									<h5 data-v-390b037b="" style="font-weight: bold;">方法1：使用公开账号<strong data-v-390b037b="">(方便快捷)</strong></h5>
+									<p data-v-390b037b="">使用我们提供的“公开香港 ID”下载赛盾</p>
+									<p data-v-390b037b="">使用此方法如官方公开ID登录异常请联系赛盾人工实时在线客服咨询新的苹果ID</p>
+								</div>
+								<div style="flex: 1;display: flex;align-items: center;justify-content: center;">
+									<img src="img/look.png" width="80%" />
+								</div>
+							</a>
+							<a data-v-390b037b="" href="appstore-approach-1.html" class="istep-item" style="display: flex;">
+								<div style="flex: 6;">
+									<h5 data-v-390b037b="" style="font-weight: bold;">方法2：创建新账号<strong data-v-390b037b="" style="color:red">(强烈推荐)</strong></h5>
+									<p data-v-390b037b="">创建一个全新的“香港 Apple ID”下载赛盾；</p>
+								</div>
+								<div style="flex: 1;display: flex;align-items: center;justify-content: center;">
+									<img src="img/look.png" width="80%" />
+								</div>
+							</a>
+							<a data-v-390b037b="" href="appstore-approach-2.html" class="istep-item" style="display: flex;">
+								<div style="flex: 6;">
+									<h5 data-v-390b037b="" style="font-weight: bold;">方法3：修改账号地区<strong data-v-390b037b="">(推荐)</strong></h5>
+									<p data-v-390b037b="">修改当前的 Apple ID 地区到“香港”下载赛盾；</p>
+								</div>
+								<div style="flex: 1;display: flex;align-items: center;justify-content: center;">
+									<img src="img/look.png" width="80%" />
+								</div>
+							</a>
+							<a data-v-390b037b="" href="appstore-appidpay-chat.html" class="istep-item" style="display: flex;">
+								<div style="flex: 6;">
+									<h5 data-v-390b037b="" style="font-weight: bold;">方法4：自行购买独立ID</h5>
+									<p data-v-390b037b="">24小时自动发货，可改密保，永久使用；</p>
+								</div>
+								<div style="flex: 1;display: flex;align-items: center;justify-content: center;">
+									<img src="img/look.png" width="80%" />
+								</div>
+							</a>
+							<!-- <a data-v-390b037b="" href="appstore-faq.html" class="istep-item" style="display: flex;">
+								<div style="flex: 6;">
+									<h5 data-v-390b037b="" style="font-weight: bold;">常见问题</h5>
+									<p data-v-390b037b="">下载过程若遇到一些疑难杂症，来这儿看看吧；</p>
+								</div>
+								<div style="flex: 1;display: flex;align-items: center;justify-content: center;">
+									<img src="img/look.png" width="80%" />
+								</div>
+							</a> -->
+						</div>
+						<h4 data-v-390b037b="">有非中国大陆的 Apple ID 账号？</h4>
+						<p data-v-390b037b="" class="btm-tip">直接在 App Store 中搜索 <strong
+								data-v-390b037b="">&lt;赛盾VPN&gt;</strong>下载应用；</p>
+						<a data-v-390b037b="" href="https://apps.apple.com/hk/app/%E8%B5%9B%E7%9B%BEvpn/id6476829505" target="_blank" class="ls-btn">前往 AppStore</a>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<script src="../assets/js/index.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/axios.js"></script>
+		<script src="../assets/js/vue.js"></script>
+		<script>
+			gotoKfLink = function() {
+				window.location.href = "http://xkf.zhimakf.com/s/107176gz41"
+			};
+			
+			gotoMp4 = function() {
+				// window.location.href = "saidun-help.mp4"
+				window.location.href = "http://www.aentos.com/help/saidun-help.mp4"
+			};
+			
+			new Vue({
+				el: '#app',
+				data: {
+					selMenu:'',
+					isShowMenu:false,
+					isShowLanguage:false,
+					isLogin: false,
+					token: '',
+					dMenu: 'ios',
+				},
+				methods: {
+					changeDownloadType(type) {
+						this.dMenu = type
+					},
+					showMenu() {
+						if (this.isShowMenu){
+							this.isShowMenu = false
+							this.selMenu = ''
+						}else {
+							this.isShowMenu = true
+							this.selMenu = 'sandian'
+						}
+					},
+					init: function() {
+						this.isLogin = true
+					},
+					logout: function() {
+						if (confirm("您确定要退出登录吗?")) {
+							localStorage.removeItem("saidun-token")
+							this.username = ""
+							this.vipInfo = ""
+							this.token = null
+							this.isLogin = false
+						}
+					},
+					gotoLoginPage: function() {
+						window.location.href = "../login.html"
+					},
+					gotoHelpPage: function() {
+						window.location.href = "../help.html"
+					},
+					gotoPayPage: function() {
+						window.location.href = "../pay.html"
+					},
+					gotoIndex: function() {
+						window.location.href = "../index.html"
+					},
+				},
+				created: function() {
+					$("#language").show()
+					$("#menu0").show()
+					
+					this.token = localStorage.getItem("saidun-token")
+					if (this.token != null) {
+						this.init()
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

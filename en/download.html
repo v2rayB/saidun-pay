@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="renderer" content="webkit|ie-comp">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="format-detection" ,="" content="telephone=no">
+		<meta name="format-detection" ,="" content="email=no">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<link rel="icon" href="../favicon.ico">
+		<title>Seton VPN - Download</title>
+	</head>
+	<body style="margin: 0;background-color: white;">
+		<div id = "app">
+			<div style="height: 80px;background-color: #337FF2;width: 100%;position: fixed;left: 0;
+			top: 0;display: flex;align-items: center;">
+				<div style="display: flex;justify-content: left;align-items: center;flex: 1;margin-left: 20px;" @click="gotoIndex()">
+					<div><img src="../assets/img/logo.png" style="height: 40px;width: 40px;"/></div>
+					<div style="color: white;font-weight: bold;margin-left: 5px;font-size: 20px;">Seton VPN</div>
+				</div>
+				
+				<div style="flex: 1;display: flex;align-items: center;justify-content: right;">
+					<div style="color: white;font-size: 18px;margin-right: 10px;" @click="gotoIndex()">Homepage</div>
+					<div style="display: flex;align-items: center;border: 1px solid white;border-radius: 13px;
+					justify-content: center;height: 26px;margin-right: 10px;width: 80px;" @click="gotoLoginPage()" v-if="!isLogin">
+						<img src="../assets/img/icon1.png" style="height: 12px;width: 12px;"/>
+						<div style="font-size: 12px;color: white;margin-left: 3px;">User Login</div>
+					</div>
+					<div style="display: flex;align-items: center;border: 1px solid white;border-radius: 13px;
+					justify-content: center;height: 26px;margin-right: 10px;width: 80px;" @click="logout()" v-else>
+						<div style="font-size: 16px;color: white;margin-left: 3px;">Logout</div>
+					</div>
+					<div @click="showMenu()" style="margin-right: 20px;" v-if="selMenu=='sandian'"><img  src="../assets/img/sandian-1.png" style="width: 26px;height: 8px;"/></div>
+					<div @click="showMenu()" style="margin-right: 20px;" v-else>
+						<img  src="../assets/img/sandian.png" style="width: 26px;height: 8px;"/>
+					</div>
+				</div>
+			</div>
+			<div v-show="isShowMenu" id="menu0" style="position: fixed;background-color: white;width: 150px;height: 180px;right: 3px;top: 83px;display: none;">
+				<div @click="gotoPayPage()" style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #337FF2;margin-top: 10px;">Member Purchase</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="gotoHelpPage()">Common Problem</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="gotoLoginPage()">Account Login</div>
+				<div @click="showLanguage" style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-bottom: 10px;">
+					<div>English</div>
+					<div style="margin-left: 20px;"><img src="../assets/img/xiangyou.png" style="width: 10px;height: 10px;"/></div>
+				</div>
+			</div>
+			<div  v-show="isShowLanguage" id="language" style="position: fixed;background-color: white;width: 130px;height: 90px;right: 156px;top: 213px;display: none;">
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-top: 5px;" @click="switchLanguage('en')" >English</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="switchLanguage('cn')">简体中文</div>
+			</div>
+			<div style="position: fixed;right: 10px;bottom: 10px;"><img onclick="gotoKfLink()" src="../assets/img/kf.png" style="width:48px"/></div>
+			
+			<div style="height: 50px;display: flex;background-color: rgb(238, 238, 240);width: 100%;margin-top: 80px;">
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('ios')">
+					<div><img :src="dMenu=='ios'?'../assets/img/mios-1.png':'../assets/img/mios-0.png'" style="height: 26px;width: 26px;"/></div>
+					<div :style="dMenu=='ios'?'font-weight: bold;font-size: 18px;margin-left: 10px;color: #337FF2;':'font-weight: bold;font-size: 18px;margin-left: 10px;color: #707070;'">iOS</div>
+				</div>
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('android')">
+					<div><img :src="dMenu=='android'?'../assets/img/mandroid-1.png':'../assets/img/mandroid-0.png'" style="height: 26px;width: 26px;"/></div>
+					<div :style="dMenu=='android'?'font-weight: bold;font-size: 18px;margin-left: 10px;color: #337FF2;':'font-weight: bold;font-size: 18px;margin-left: 10px;color: #707070;'">Android</div>
+				</div>
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('windows')">
+					<div><img :src="dMenu=='windows'?'../assets/img/mwindows-1.png':'../assets/img/mwindows-0.png'" style="height: 26px;width: 26px;"/></div>
+					<div :style="dMenu=='windows'?'font-weight: bold;font-size: 18px;margin-left: 10px;color: #337FF2;':'font-weight: bold;font-size: 18px;margin-left: 10px;color: #707070;'">Windows</div>
+				</div>
+			</div>
+			<div style="background: url('../assets/img/bg1.png') no-repeat;background-size:100% 100%;height: auto;">
+				<div v-show="dMenu=='ios'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;
+					justify-content: center;padding-top: 30px;align-items: center;width: 94%;margin-left: 3%;">
+						<div>Download the iOS version of Seton VPN application</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Supports iOS 15+systems</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Suitable for iPhone 13, 12, 11 SE, XS, XR; iPad Pro, Air, and Mini</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">The highest security ECC encryption technology protects data privacy and security</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Breaking through limitations and easily unlocking popular streaming and mobile games</div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;">
+						<div style="background-color: #337FF2;width: 120px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoIosAppStoreAndHelp()">Fast download</div>
+					</div>
+					
+				</div>
+				<div v-show="dMenu=='android'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;justify-content: center;
+					padding-top: 30px;align-items: center;width: 94%;margin-left: 3%;">
+						<div>Download the Android version of Seton VPN application</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Supports Android 12 Android 11, Android 10, Android 9, Android 8, Android 7, Android 6, and Android 5 system versions</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">3000+global server configurations, unlimited traffic and unlimited speed</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Breaking through limitations and easily unlocking popular streaming and mobile games</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">The highest security ECC encryption technology protects data privacy and security  </div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;">
+						<div style="background-color: #337FF2;width: 120px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoDownloadAndroidPage()">Fast download</div>
+					</div>
+					
+				</div>
+				<div v-show="dMenu=='windows'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;justify-content: center;
+					padding-top: 30px;align-items: center;width: 94%;margin-left: 3%;">
+						<div>Download the Windows version of Seton VPN application</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;align-items: center;">
+							<div>*</div>
+							<div style="font-size: 14px;margin-left: 10px;">Support: Windows 10 and above</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div>*</div>
+							<div style="font-size: 14px;margin-left: 10px;">Download a green and secure VPN suitable for Windows version for your computer, fully protecting your online privacy and allowing unrestricted and barrier free access to global networks.</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">No registration required, no subscription required, unlimited traffic, unlimited bandwidth, no logs</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Top encryption technology in the industry ensures communication security and prevents your IP address from being illegally tracked</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">New users can receive a free trial period for their first use, experiencing it first and then deciding whether to pay for it</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="../assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">Full day online one-on-one manual customer service, giving you a full sense of security</div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;">
+						<div style="background-color: #337FF2;width: 120px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoDownloadWinPage()">Fast download</div>
+					</div>
+					
+				</div>
+				<div style="background-color: #919191;height: 1px;"></div>
+				
+				<div style="display: flex;width: 90%;justify-content: space-between;margin-left: 5%;margin-top: 20px;">
+					<div style="text-align: left;">
+						<div style="font-weight: bold;font-size: 25px;color: #121212;">Download client</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;" onclick="gotoIosAppStore()">IOS download</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;" onclick="gotoDownloadAndroidPage()">Android download</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;" onclick="gotoDownloadWinPage()">Windows download</div>
+						<div style="font-weight: bold;font-size: 12px;margin-top: 20px;color: #424242;">Permanent QR code on official website, never lost</div>
+						<div style="font-weight: bold;font-size: 12px;color: #424242;margin-top: 5px;">Suggest long pressing the QR code to save the image</div>
+						<div style="margin-top: 10px;"><img src="../assets/img/webqrcode0.png" style="width: 100px;height: 100px;"/></div>
+					</div>
+					<div style="text-align: right;">
+						<div style="font-weight: bold;font-size: 20px;color: #121212;">About Us</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;">Company Introduction</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;" onclick="gotoPrivite()">Privacy Agreement</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;" onclick="gotoUser()">Service Agreement</div>
+						<div style="font-weight: bold;font-size: 16px;margin-top: 20px;color: #424242;" onclick="showEmail()">
+							Contact information
+						</div>
+					</div>
+				</div>
+				<div style="height: 20px;"></div>
+				<hr />
+				<div style="text-align: center;margin-top: 30px;">© 2024 Seton VPN. All rights reserved. </div>
+				<div style="height: 50px;"></div>
+			</div>
+			
+		</div>
+		
+		<script src="../assets/js/index.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/axios.js"></script>
+		<script src="../assets/js/vue.js"></script>
+		<script>
+			gotoKfLink = function() {
+				window.location.href = "http://xkf.zhimakf.com/s/107176gz41"
+			};
+			gotoIosAppStoreAndHelp = function() {
+				window.location.href = "https://apps.apple.com/hk/app/%E8%B5%9B%E7%9B%BEvpn/id6476829505"
+				setTimeout(function(){
+						window.location.href = "../help/appstore.html"
+				},100)
+			
+			};
+			new Vue({
+				el: '#app',
+				data: {
+					selMenu:'',
+					isShowMenu:false,
+					isShowLanguage:false,
+					isLogin: false,
+					token: '',
+					dMenu: 'ios',
+				},
+				methods: {
+					switchLanguage(language) {
+						if (language == "en") {  //切换到英文
+							window.location.href = "download.html"
+						}else {  //切换到中文
+							window.location.href = "../download.html"
+						}
+					},
+					showLanguage() {
+						if (this.isShowLanguage) {
+							this.isShowLanguage = false
+						}else {
+							this.isShowLanguage =  true
+						}
+					},
+					changeDownloadType(type) {
+						this.dMenu = type
+					},
+					showMenu() {
+						if (this.isShowMenu){
+							this.isShowMenu = false
+							this.selMenu = ''
+						}else {
+							this.isShowMenu = true
+							this.selMenu = 'sandian'
+						}
+					},
+					init: function() {
+						this.isLogin = true
+					},
+					logout: function() {
+						if (confirm("Are you sure you want to log out?")) {
+							localStorage.removeItem("saidun-token")
+							this.username = ""
+							this.vipInfo = ""
+							this.token = null
+							this.isLogin = false
+						}
+					},
+					gotoLoginPage: function() {
+						window.location.href = "login.html"
+					},
+					gotoHelpPage: function() {
+						window.location.href = "help.html"
+					},
+					gotoPayPage: function() {
+						window.location.href = "pay.html"
+					},
+					gotoIndex: function() {
+						window.location.href = "index.html"
+					},
+				},
+				created: function() {
+					$("#language").show()
+					$("#menu0").show()
+					
+					this.token = localStorage.getItem("saidun-token")
+					if (this.token != null) {
+						this.init()
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

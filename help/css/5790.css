@@ -1,0 +1,200 @@
+.approach-container[data-v-6b2fb93e] {
+	background: #fff
+}
+
+.approach-container header[data-v-6b2fb93e] {
+	padding: .32206rem .19324rem;
+	text-align: left
+}
+
+.approach-container header .logo[data-v-6b2fb93e] {
+	width: .96618rem;
+	height: .96618rem;
+	vertical-align: middle;
+	display: inline-block
+}
+
+.approach-container header .logo img[data-v-6b2fb93e] {
+	width: 100%;
+	height: 100%
+}
+
+.approach-container header h2[data-v-6b2fb93e] {
+	font-size: .57971rem;
+	color: #000;
+	font-weight: 500;
+	line-height: 1;
+	vertical-align: middle;
+	display: inline-block;
+	margin-left: .08052rem
+}
+
+.approach-container .main[data-v-6b2fb93e] {
+	padding: 0;
+	text-align: left
+}
+
+.approach-container .main .nav-tip[data-v-6b2fb93e] {
+	background: #f2f2f2;
+	color: #333;
+	font-weight: 500;
+	font-size: .38647rem;
+	padding: .38647rem .48309rem;
+	border-top: .02415rem solid #ccc;
+	border-bottom: .02415rem solid #ccc
+}
+
+.approach-container .main .step-container[data-v-6b2fb93e] {
+	padding: 0 .48309rem;
+	margin-top: .48309rem;
+	margin-bottom: .96618rem
+}
+
+.approach-container .main .istep-item[data-v-6b2fb93e] {
+	margin-top: .96618rem;
+	display: block
+}
+
+.approach-container .main .istep-item .step-title[data-v-6b2fb93e] {
+	background: #333;
+	font-size: .43478rem;
+	color: #fff;
+	border-radius: .48309rem;
+	min-width: 2.89855rem;
+	height: .88567rem;
+	line-height: .88567rem;
+	display: inline-block;
+	text-align: center;
+	padding: 0 .48309rem
+}
+
+.approach-container .main .istep-item li[data-v-6b2fb93e],
+.approach-container .main .istep-item p[data-v-6b2fb93e] {
+	font-size: .38647rem;
+	color: #333;
+	margin-top: .48309rem;
+	line-height: 1.8
+}
+
+.approach-container .main .istep-item li a[data-v-6b2fb93e],
+.approach-container .main .istep-item li strong[data-v-6b2fb93e],
+.approach-container .main .istep-item p a[data-v-6b2fb93e],
+.approach-container .main .istep-item p strong[data-v-6b2fb93e] {
+	color: #1c83ed
+}
+
+.approach-container .main .istep-item ul[data-v-6b2fb93e] {
+	margin-top: .48309rem
+}
+
+.approach-container .main .istep-item li[data-v-6b2fb93e] {
+	list-style-type: disc;
+	margin-left: .48309rem;
+	margin-top: 0
+}
+
+.approach-container .main .istep-item .step-img-container[data-v-6b2fb93e] {
+	margin-top: .48309rem;
+	width: 100%
+}
+
+.approach-container .main .istep-item .step-img-container img[data-v-6b2fb93e] {
+	width: 60%;
+	display: block;
+	font-size: 0;
+	margin: .24155rem 0
+}
+
+.approach-container .main .istep-item .inline-img[data-v-6b2fb93e] {
+	width: .57971rem;
+	display: inline-block;
+	vertical-align: middle
+}
+
+.approach-container .main .btm-tip[data-v-6b2fb93e] {
+	font-size: .33816rem;
+	color: #000;
+	margin-bottom: .48309rem;
+	margin-top: .48309rem
+}
+
+.approach-container .main .btm-tip strong[data-v-6b2fb93e] {
+	color: #1c83ed
+}
+
+.approach-container .main .ls-btn[data-v-6b2fb93e] {
+	display: inline-block;
+	padding: .19324rem .48309rem;
+	margin-top: .48309rem;
+	background-color: #35557e;
+	color: #fff;
+	font-size: .38647rem;
+	border-radius: .44283rem
+}
+
+.approach-container .main .item-tips[data-v-6b2fb93e] {
+	font-size: .33816rem;
+	color: red;
+	margin-top: .48309rem;
+	line-height: 1.8;
+	background: #fff2f2;
+	display: block;
+	padding: .17713rem 0;
+	text-align: center;
+	border-radius: .08052rem
+}
+
+.approach-container .main .item-tips img[data-v-6b2fb93e] {
+	width: .48309rem;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: .24155rem
+}
+
+.approach-container .main .item-tips span[data-v-6b2fb93e] {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.approach-container .footer[data-v-6b2fb93e] {
+	padding: 0 .48309rem .96618rem;
+	margin-top: .48309rem
+}
+
+.approach-container .footer p[data-v-6b2fb93e] {
+	font-size: .38647rem;
+	color: #333;
+	margin-top: .48309rem;
+	line-height: 1.8
+}
+
+.approach-container .footer p a[data-v-6b2fb93e],
+.approach-container .footer p strong[data-v-6b2fb93e] {
+	color: #1c83ed
+}
+
+.approach-container .footer .tips[data-v-6b2fb93e] {
+	font-style: italic;
+	line-height: 1.8;
+	font-size: .38647rem;
+	color: #666
+}
+
+.approach-container .footer .is_helpful[data-v-6b2fb93e] {
+	margin-top: .96618rem;
+	font-size: .38647rem;
+	color: #333
+}
+
+.approach-container .footer .is_helpful button[data-v-6b2fb93e] {
+	width: 1.44928rem;
+	height: .67633rem;
+	line-height: .67633rem;
+	font-size: .38647rem;
+	margin: 0 .24155rem;
+	border: .02415rem solid #1c83ed;
+	color: #1c83ed;
+	border-radius: .24155rem;
+	background: transparent;
+	cursor: pointer
+}

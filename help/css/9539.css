@@ -1,0 +1,92 @@
+.help-container header[data-v-390b037b] {
+    padding: .32206rem .19324rem;
+    text-align: left;
+    border-bottom: .02415rem solid #eee
+}
+
+.help-container header .logo[data-v-390b037b] {
+    width: .96618rem;
+    height: .96618rem;
+    vertical-align: middle;
+    display: inline-block
+}
+
+.help-container header .logo img[data-v-390b037b] {
+    width: 100%;
+    height: 100%
+}
+
+.help-container header h2[data-v-390b037b] {
+    font-size: .57971rem;
+    color: #000;
+    font-weight: 500;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: .08052rem
+}
+
+.help-container .main[data-v-390b037b] {
+    margin: .48309rem 0;
+    padding: .16103rem .48309rem;
+    text-align: left
+}
+
+.help-container .main h4[data-v-390b037b] {
+    font-size: .43478rem;
+    color: #000;
+    font-weight: 700;
+    line-height: 1
+}
+
+.help-container .main .install-step[data-v-390b037b] {
+    padding: 0 .16908rem;
+    margin-top: .48309rem;
+    margin-bottom: .96618rem
+}
+
+.help-container .main .istep-item[data-v-390b037b] {
+    margin-bottom: .32206rem;
+    padding: .28986rem;
+    border: .02415rem solid #a9adb0;
+    display: block;
+    border-radius: .24155rem
+}
+
+.help-container .main .istep-item h5[data-v-390b037b] {
+    font-size: .43478rem;
+    color: #000;
+    font-weight: 500;
+    line-height: 1;
+    margin: .32206rem 0
+}
+
+.help-container .main .istep-item h5 strong[data-v-390b037b] {
+    color: #1c83ed
+}
+
+.help-container .main .istep-item p[data-v-390b037b] {
+    font-size: .32206rem;
+    color: #333;
+    margin-bottom: .16103rem
+}
+
+.help-container .main .btm-tip[data-v-390b037b] {
+    font-size: .33816rem;
+    color: #000;
+    margin-bottom: .48309rem;
+    margin-top: .48309rem
+}
+
+.help-container .main .btm-tip strong[data-v-390b037b] {
+    color: #1c83ed
+}
+
+.help-container .main .ls-btn[data-v-390b037b] {
+    display: inline-block;
+    padding: .19324rem .48309rem;
+    background-color: #375682;
+    color: #fff;
+    font-size: .38647rem;
+    border-radius: .44283rem
+}

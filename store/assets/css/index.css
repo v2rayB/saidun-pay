@@ -1,0 +1,564 @@
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .5);; /*一般遮罩随便设置一个颜色*/
+}
+
+.nav {
+    min-width: 340px;
+    width: 90%;
+    position: fixed;
+    left: calc(5%);
+    bottom: 5px;
+    z-index: 11;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #170B31;
+    height: 60px;
+}
+
+.inNav {
+    width: 100%;
+    position: absolute;
+    left: -2px;
+    top: -4px;
+    height: 60px;
+    border: 2px solid #6438BB;
+    border-radius: 30px;
+    display: flex;
+}
+
+.inNav > .item {
+    width: 34%;
+    height: 60px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    flex-direction: column;
+}
+
+.home {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.home > .pic1 {
+    width: 151px;
+    height: 162px;
+    position: absolute;
+    right: 0;
+    top: 28px;
+}
+
+.home > .title {
+    width: 80%;
+    height: 24px;
+    white-space: nowrap;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+	font-family: Alimama ShuHeiTi;
+    left: 14px;
+    top: 74px;
+}
+
+.home > .box {
+    width: calc(100% - 13px - 13px);
+    height: 100px;
+    display: flex;
+    margin: 13px;
+    /*background: yellowgreen;*/
+    z-index: auto;
+    position: absolute;
+    left: 0;
+    color: white;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    top: 185px;
+}
+
+.home > .box > .item {
+    width: 86px;
+    color: white;
+    height: 86px;
+    border-radius: 21px;
+    background: #170B31;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	margin-top: 10px;
+}
+
+.home > .box > .acItem {
+    width: 86px;
+    height: 86px;
+    border-radius: 21px;
+    background: #7747FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	margin-top: 10px;
+}
+
+.home > .box > .acItem > .img {
+    width: auto;
+    height: 28px;
+}
+
+.home > .box > .item > .img {
+    width: auto;
+    height: 28px;
+}
+
+.home > .list {
+    width: calc(100% - 13px - 13px);
+    margin: 0 auto;
+    /*background: yellowgreen;*/
+    /*min-height: 1000px;*/
+    padding-bottom: 60px;
+}
+
+.home > .list > .li {
+    width: 100%;
+    height: 113px;
+    display: flex;
+    position: relative;
+    margin-bottom: 27px;
+}
+
+.home > .list > .li > .left {
+    width: 113px;
+    height: 113px;
+    border-radius: 8px;
+    position: relative;
+    background-size: 113px 113px;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/imgs/pp.png");
+}
+
+.home > .list > .li > .left > .po1 {
+    width: 113px;
+    text-align: center;
+    position: absolute;
+    font-size: 16px;
+    color: white;
+    left: 0;
+    top: 74px;
+    border-radius: 8px;
+	font-family: PingFang SC;
+}
+
+.home > .list > .li > .left > .po2 {
+	margin-top: 8px;
+    width: 113px;
+    font-size: 15px;
+    position: absolute;
+    color: white;
+    left: 0;
+    text-align: center;
+    top: 90px;
+    transform: scale(0.8);
+    transform-origin: top center;
+    border-radius: 8px;
+}
+
+.home > .list > .li > .right {
+    width: calc(100% - 113px - 12px);
+    height: 113px;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.home > .list > .li > .right > .txt1 {
+    font-size: 14px;
+    color: #F8F8F8;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.home > .list > .li > .right > .txt2 {
+    font-size: 14px;
+    color: #F8F8F8;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    transform: scale(0.8);
+    transform-origin: left center;
+}
+
+.home > .list > .li > .right > .txt3 {
+    height: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.home > .list > .li > .right > .txt3 > .p1 {
+    font-size: 26px;
+    background: linear-gradient(to right, #FD9C72, #FE6357, #FF6471); /* 创建线性渐变背景 */
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.home > .list > .li > .right > .txt3 > .p2 {
+    font-size: 15px;
+    background: linear-gradient(to right, #FD9C72, #FE6357, #FF6471); /* 创建线性渐变背景 */
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-radius: 4px;
+    /*color: transparent;*/
+    font-weight: bold;
+}
+
+.home > .list > .li > .right > .txt4 {
+}
+
+.order > .title {
+    width: 123px;
+    display: block;
+    height: 123px;
+    margin: 52px auto;
+}
+
+.order {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.order > .box {
+    width: 340px;
+    height: 200px;
+    display: block;
+    background: #170B31;
+    margin: 28px auto;
+    overflow: hidden;
+}
+
+.order > .box > .h2 {
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: bold;
+    margin: 17px auto 34px;
+    color: white;
+    text-align: center;
+}
+
+.order > .box > .input {
+    /*font-size: 17px;*/
+    text-align: left;
+    height: 30px;
+    width: 90%;
+    display: block;
+    font-weight: bold;
+    margin: 0 auto;
+    font-size: 13px;
+    color: white;
+    text-indent: 10px;
+    background: #312054;
+    border: 0;
+}
+
+.order > .box > .line {
+    width: 90%;
+    margin: 22px auto;
+    height: 2px;
+    background: #312054;
+}
+
+.order > .box > .btms {
+    width: 80%;
+    line-height: 30px;
+    color: white;
+    margin: 0 auto;
+    height: 30px;
+    font-weight: bolder;
+    justify-content: space-between;
+    font-size: 16px;
+    display: flex;
+}
+
+.order > .box > .btms > .left {
+    width: 120px;
+    height: 30px;
+    background: #7747FF;
+    text-align: center;
+    border-radius: 5px;
+    align-items: center;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    margin: 0
+}
+
+.toBuy {
+    position: absolute;
+    width: 100vw;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.toBuy > .sBox {
+    width: 280px;
+    /*height: 280px;*/
+    position: relative;
+    background-color: #000000;
+}
+
+.toBuy > .sBox > .title {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /*border-bottom: 1px solid #9A9A9A;*/
+    align-items: center;
+    font-size: 14px;
+    font-weight: bolder;
+    position: relative;
+    color: white;
+}
+
+.toBuy > .sBox > .close {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+    transform: scale(1, 0.5);
+}
+
+.toBuy > .sBox > .title2 {
+    width: calc(100% - 17px - 17px);
+    padding: 0 17px 0 0;
+    height: 50px;
+    /*border-bottom: 1px solid #9A9A9A;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 17px;
+
+}
+
+.toBuy > .sBox > .title2 > .img {
+    width: 28px;
+    height: auto;
+}
+
+.toBuy > .sBox > .title2 > .txt {
+    width: calc(100% - 28px - 17px - 30px);
+    height: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+	color: white;
+}
+
+.toBuy > .sBox > .title2 > .get {
+    width: 17px;
+    height: 17px;
+}
+
+.toBuy > .sBox > .sTxt {
+    width: calc(100% - 17px - 17px);
+    height: 28px;
+    color: white;
+    margin: 0 auto;
+    font-size: 12px;
+    transform: scale(0.9);
+    transform-origin: left center;
+}
+
+.toBuy > .sBox > .input {
+    /*font-size: 17px;*/
+    text-align: left;
+    height: 30px;
+    width: calc(100% - 17px - 17px);
+    display: block;
+    font-weight: bold;
+    margin: 0 auto 16px;
+    font-size: 11px;
+    border-radius: 4px;
+    color: white;
+    text-indent: 10px;
+    background: #312054;
+    border: 0;
+}
+
+.btm {
+    width: 160px;
+    height: 40px;
+    margin: 0 auto 16px;
+    background-color: #28C530;
+    display: flex;
+    color: white;
+    border-radius: 18px;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bolder;
+    align-items: center;
+}
+.my{
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.my>.pic1 {
+    width: 151px;
+    height: 162px;
+    position: absolute;
+    right: 0;
+    top: 76px;
+}
+.my > .title {
+    width: 80%;
+    height: 24px;
+    white-space: nowrap;
+    font-size: 33px;
+    font-weight: bolder;
+    color: white;
+    position: absolute;
+	font-family: Alimama ShuHeiTi;
+    left: 19px;
+    top: 91px;
+}
+.my > .title2 {
+	padding-left: 10px;
+	padding-right: 10px;
+    height: 24px;
+    white-space: nowrap;
+    /*font-size: 33px;*/
+    font-weight: bolder;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: white;
+    background-color: #7747FF;
+    position: absolute;
+    left: 19px;
+    top: 154px;
+}
+.my > .bodys {
+    margin: 248px auto;
+    width: calc(100% - 17px - 17px);
+    position: relative;
+}
+.my > .bodys>.head{
+    height: 60px;
+    width: calc(100% - 40px);
+    padding: 0 20px;
+    border-radius: 8px;
+    position: relative;
+    color: #444444 ;
+    font-size: 20px;
+    display: flex;align-items: center;
+    font-weight: bold;
+    background: linear-gradient(to right, #DCD0FF ,#7747FF); /* 创建线性渐变背景 */
+
+}
+.my > .bodys>.head>.img{
+    position: absolute;
+    right:21px;
+    top: 2px;
+    width: 63px;
+    height: 55px;
+}
+.my > .bodys>.list{
+    display: flex;align-items: center;
+    font-size: 16px;
+    color: white;
+    height: 60px;
+    width: calc(100%  - 20px);
+    padding: 0 20px 0 0 ;
+    flex-direction: column;
+    margin-left: 20px;
+    position: relative;
+}.my > .bodys>.list>.img{
+     width: 9px;
+     height: 15px;
+    position: absolute;
+    top: 22px;
+    right: 27px;
+     transition: all 0.2s ease 0s;
+ }
+.my > .bodys>.list>.img2{
+    width: 9px;
+    height: 15px;
+    position: absolute;
+    transform: rotate(90deg);
+    top: 20px;
+    right: 27px;
+    transition: all 0.2s ease 0s;
+}
+.my > .bodys>.listIn{
+    width: calc(100% - 24px);
+    height: 32px;
+    margin: 0 auto 0 24px;
+}
+.my > .bodys>.listIn>.inner{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: white;
+    height: 40px;
+    font-size: 16px;
+}
+.my > .bodys>.listIn>.inner>.img{
+    width: 6px;
+    height: 10px;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+}

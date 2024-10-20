@@ -1,0 +1,136 @@
+<html lang="zh" class="ios iphone mobile portrait" data-dpr="1" style="font-size: 42.8px;">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
+		<title>赛盾VPN-购买海外ID</title>
+	</head>
+	<body style="margin: 0;background: url('img/appstore-appidpay-chat/bg.png') no-repeat;background-size:cover;background-color: white;">
+		<div id="app" >
+			<div style="background-color: white;height: 70px;display: flex;align-items: center;">
+				<div style="margin-left: 5%;"><a href="appstore.html"><img src="img/appstore-appidpay-chat/back.png" style="height: 28px;width: 16px;"/></a></div>
+				<div style="font-size: 26px;color: #424242;margin-left: 5%;margin-bottom: 5px;">赛盾下载教程</div>
+			</div>
+			
+			<div style="display: flex;margin-top: 50px;">
+				<div style="display: flex;justify-content: center;margin-left: 5%;">
+					<img src="img/appstore-appidpay-chat/kf-logo.png" style="height:50px;width:50px"/>
+				</div>
+				<div style="margin-left: 5%;width: 70%;">
+					<div style="color: #767676;font-size: 16px;font-weight: bold;height: 30px;">Shield robot customer service</div>
+					<div style="background-color: white;height: auto;">
+						<div style="font-size: 16px;color: #4C4C4C;padding: 15px;">欢迎光临，本店无人工在线，“24小时自动秒发”请自助购买。</div>
+						<div style="font-size: 16px;color: #4C4C4C;margin-left: 15px;margin-right: 15px;">专属您自己的海外苹果id，实现一人一号，支持全球地区，购买后可自行更改密保，永久使用。</div>
+						<div style="font-size: 16px;color: #4C4C4C;margin-left: 15px;margin-right: 15px;margin-top: 15px;">购买后自动秒发id与使用教程。（此id不建议在设备的设置中登录，支持App Store内登录）</div>
+						<div style="font-size: 16px;color: #4C4C4C;padding: 15px;border-bottom: 1px dotted #767676;">售后邮箱：xigua6677@yeah.net</div>
+						<div style="display: flex;">
+							<div style="color: #337FF2;font-size: 17px;padding: 15px;"><a href="appstore-appidpay-pay.html">点击购买</a></div>
+							<div style="color: #337FF2;font-size: 17px;padding: 15px;"><a href="img/appstore-appidpay-chat/appidpay.jpg">使用教程</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div style="display: flex;margin-top: 50px;" v-for="(item,index) in appidPayInfoList">
+				<div style="display: flex;justify-content: center;margin-left: 5%;">
+					<img src="img/appstore-appidpay-chat/kf-logo.png" style="height:50px;width:50px"/>
+				</div>
+				<div style="margin-left: 5%;width: 70%;">
+					<div style="color: #767676;font-size: 16px;font-weight: bold;height: 30px;">Shield robot customer service</div>
+					<div style="background-color: white;height: auto;">
+						<div style="font-size: 20px;font-weight: bold;color: #323232;padding: 15px">虚拟商品已发货</div>
+						<div style="display: flex;margin-left: 15px;margin-right: 15px;">
+							<div><img src="img/appstore-appidpay-chat/product-img.png" style="width: 150px;height: 140px;"/></div>
+							<div style="display: flex;flex-direction: column;margin-left: 10px;">
+								<div style="font-size: 18px;color: #3F3F3F;;flex: 1;">{{item.name}}</div>
+								<div style="font-size: 18px;color: #282828;flex: 1;"><span>￥</span><span>{{item.money}}</span></div>
+							</div>
+						</div>
+						<div v-if="item.country=='INS'" style="margin-left: 15px;margin-top: 15px;font-size: 16px;padding-bottom: 15px;">
+							<div style="margin-top: 5px;"><span>账号：</span><span>{{item.account}}</span></div>
+							<div style="margin-top: 5px;"><span>密码：</span><span>{{item.password}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱：</span><span>{{item.bind_email}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱地址：</span><span>{{item.bind_email_address}}</span></div>
+							<div style="margin-top: 5px;"><span>售后邮箱：</span><span>xigua6677@yeah.net</span></div>
+							<div style="margin-top: 5px;"><span>记得长按复制保存哦</span></div>
+						</div>
+						<div v-else-if="item.country=='FAC'" style="margin-left: 15px;margin-top: 15px;font-size: 16px;padding-bottom: 15px;">
+							<div style="margin-top: 5px;"><span>账号：</span><span>{{item.account}}</span></div>
+							<div style="margin-top: 5px;"><span>密码：</span><span>{{item.password}}</span></div>
+							<div style="margin-top: 5px;"><span>2FA密钥：</span><span>{{item.fa2_key}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱：</span><span>{{item.bind_email}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱密码：</span><span>{{item.bind_email_pwd}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱地址：</span><span>{{item.bind_email_address}}</span></div>
+							<div style="margin-top: 5px;"><span>售后邮箱：</span><span>xigua6677@yeah.net</span></div>
+							<div style="margin-top: 5px;"><span>记得长按复制保存哦</span></div>
+						</div>
+						<div v-else-if="item.country=='TIK'" style="margin-left: 15px;margin-top: 15px;font-size: 16px;padding-bottom: 15px;">
+							<div style="margin-top: 5px;"><span>账号：</span><span>{{item.account}}</span></div>
+							<div style="margin-top: 5px;"><span>密码：</span><span>{{item.password}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱：</span><span>{{item.bind_email}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱密码：</span><span>{{item.bind_email_pwd}}</span></div>
+							<div style="margin-top: 5px;"><span>售后邮箱：</span><span>xigua6677@yeah.net</span></div>
+							<div style="margin-top: 5px;"><span>记得长按复制保存哦</span></div>
+						</div>
+						<div v-else-if="item.country=='TWI'" style="margin-left: 15px;margin-top: 15px;font-size: 16px;padding-bottom: 15px;">
+							<div style="margin-top: 5px;"><span>账号：</span><span>{{item.account}}</span></div>
+							<div style="margin-top: 5px;"><span>密码：</span><span>{{item.password}}</span></div>
+							<div style="margin-top: 5px;"><span>2FA密钥：</span><span>{{item.fa2_key}}</span></div>
+							<div style="margin-top: 5px;"><span>备份码：</span><span>{{item.back_code}}</span></div>
+							<div style="margin-top: 5px;"><span>Token：</span><span>{{item.remark}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱：</span><span>{{item.bind_email}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱密码：</span><span>{{item.bind_email_pwd}}</span></div>
+							<div style="margin-top: 5px;"><span>邮箱地址：</span><span>{{item.bind_email_address}}</span></div>
+							<div style="margin-top: 5px;"><span>售后邮箱：</span><span>xigua6677@yeah.net</span></div>
+							<div style="margin-top: 5px;"><span>记得长按复制保存哦</span></div>
+						</div>
+						<div v-else style="margin-left: 15px;margin-top: 15px;font-size: 16px;padding-bottom: 15px;">
+							<div style="margin-top: 5px;"><span>ID号：</span><span>{{item.account}}</span></div>
+							<div style="margin-top: 5px;"><span>密码：</span><span>{{item.password}}</span></div>
+							<div style="margin-top: 5px;"><span>密保：</span><span>{{item.remark}}</span></div>
+							<div style="margin-top: 5px;"><span>售后邮箱：</span><span>xigua6677@yeah.net</span></div>
+							<div style="margin-top: 5px;"><span>记得长按复制保存哦</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div style="height: 100px;"></div>
+			
+		</div>
+		
+		<script src="../assets/js/index.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/axios.js"></script>
+		<script src="../assets/js/vue.js"></script>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					token: localStorage.getItem("token_id"),
+					appidPayInfoList: []
+				},
+				methods: {
+					init: function() {
+						var that = this
+						axios({
+							method: 'get',
+							url: serverIp + '/vpn/appid_pay_info?token_id='+this.token,
+						}).then(function(response) {
+							var data = response.data;
+							if (data.code != 200) {
+								alert("当前未登录，无法加载信息")
+								return
+							}
+							that.appidPayInfoList = data.result
+						})
+					},
+				},
+				created: function() {
+					if (this.token != "" && this.token != undefined) {
+						this.init()
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
