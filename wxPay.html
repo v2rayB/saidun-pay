@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="renderer" content="webkit|ie-comp">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="format-detection" ,="" content="telephone=no">
+		<meta name="format-detection" ,="" content="email=no">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<link rel="icon" href="/favicon.ico">
+		<title>赛盾VPN-微信支付</title>
+	</head>
+	<body style="background-color: #ffffff;margin: 0;">
+		
+		<div style="display: flex;background-color: #def0d8;height: 50px;justify-content: center;align-items: center;border: 1px solid #e0e2e1;">
+			<img src="assets/img/weixin.png" style="height: 30px;width: 30px;"/>
+			<div style="font-weight: bold;color: #4d7f4e;margin-left: 5px;font-size: 20px;">微信支付手机版</div>
+		</div>
+		<div style="display: flex;background-color: #d9ebf5;height: 40px;justify-content: center;align-items: center;border: 1px solid #e0e2e1;">
+			<div style="color: #2c626c;font-size: 15px;">长按二维码保存到相册使用微信扫码完成支付</div>
+		</div>
+		<div style="display: flex;align-items: center;justify-content: center;margin-top: 20px;">
+			<div style="border: 1px solid white;height: 248px;width: 248px;display: flex;justify-content: center;align-items: center;" id="qrcode"></div>
+		</div>
+		<div style="display: flex;background-color: #d9ebf5;height: 40px;justify-content: center;align-items: center;margin-top: 20px;
+		border: 1px solid #e0e2e1;">
+			<div style="color: #2c626c;font-size: 15px;">或复制以下链接到微信打开:</div>
+		</div>
+		<div style="border: 1px solid #e0e2e1;height: 80px;">
+			<div style="color: #557aa4;text-align: center;margin-top: 10px;" id="pay-link"></div>
+			<div style="text-align: center;margin-top: 10px;">
+				<button style="color: white;background-color: #5dc0df;border: 0;width: 80px;height: 30px;" id="copy">一键复制</button>
+			</div>
+		</div>
+		<div style="border: 1px solid #e0e2e1;height: 50px;font-size: 12px;color: black;text-align: center;display: flex;align-items: center;">
+			<div style="width: 90%;margin-left: 5%;">提示: 你可将以上链接发到自己微信的聊天框 （在微信顶部搜索框可以搜到自己的微信）, 点击即可进入支付 !</div>
+		</div>
+		<div style="background-color: #d9ebf5;height: 130px;border: 1px solid #e0e2e1;text-align: center;">
+			<div style="color: #2c626c;font-size: 15px;height: 33px;display: flex;
+			justify-content: center;align-items: center;" id="orderMoney">订单金额(元): </div>
+			<div style="color: #2c626c;font-size: 15px;height: 33px;display: flex;
+			justify-content: center;align-items: center;" id="orderName">购买物品: </div>
+			<div style="color: #2c626c;font-size: 15px;height: 33px;display: flex;
+			justify-content: center;align-items: center;" id="orderNo">商户订单号: </div>
+			<div style="color: #2c626c;font-size: 15px;height: 33px;display: flex;
+			justify-content: center;align-items: center;" id="createTime">创建时间: </div>
+		</div>
+		<div style="margin-top: 10px;display: flex;justify-content: center;align-items: center;">
+			<button style="color: white;background-color: #337bb6;font-size: 16px;display: flex;justify-content: center;align-items: center;
+			border: 0;width: 100px;height: 40px;border-radius: 5px;" id="openwx">打开微信</button>
+		</div>
+		
+		<div id="copy-tips" style="position: fixed;top: 50%;height: 35px;width: 80%;margin-left: 10%;
+		line-height: 35px;font-size: 16px;background-color: black;text-align: center;
+		color: white;opacity: 0.8;display: none;">复制成功</div>
+		
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/vue.js"></script>
+		<script src="assets/js/qrcode.js"></script>
+		<script>
+			$(function(){
+				var payUrl = localStorage.getItem("saidun-wxpay-data-pay_url")
+				var orderNo = localStorage.getItem("saidun-wxpay-data-order_no")
+				var orderName = localStorage.getItem("saidun-wxpay-data-order_name")
+				var createTime = localStorage.getItem("saidun-wxpay-data-create_time")
+				var orderMoney = localStorage.getItem("saidun-wxpay-data-order_money")
+				$("#orderName").text("购买物品: "+orderName)
+				$("#orderNo").text("商户订单号: "+orderNo)
+				$("#createTime").text("创建时间: "+createTime)
+				$("#orderMoney").text("订单金额(元): "+orderMoney)
+				$("#pay-link").text(payUrl)
+			})
+			
+			function copyText(val) {
+				var input = document.createElement('input');
+				input.setAttribute('readonly', 'readonly'); // 防止手机上弹出软键盘
+				input.setAttribute('value',val);
+				document.body.appendChild(input);
+				input.select();
+				var res = document.execCommand('copy');
+				document.body.removeChild(input);
+				return res;
+			}
+			
+			$("#openwx").click(function() {
+				window.location.href = localStorage.getItem("saidun-wxpay-data-pay_url")
+			})
+			
+			$("#copy").click(function() {
+				copyText($("#pay-link").text())
+				$("#copy-tips").show()
+				setTimeout(function(){
+					$("#copy-tips").hide()
+				},800)
+			})
+			
+			var qrcode = new QRCode(document.getElementById("qrcode"), {
+				text: localStorage.getItem("saidun-wxpay-data-pay_url"),
+				width: 248,
+				height: 248,
+				colorDark : "#000000",
+				colorLight : "#ffffff",
+				correctLevel : QRCode.CorrectLevel.H	
+			});
+			
+		</script>
+	</body>
+</html>

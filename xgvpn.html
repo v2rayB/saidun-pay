@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>赛盾VPN</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	</head>
+	<body>
+		
+		<div id="cover" style="display: none;">
+			<div style="z-index: 100;position: fixed;left: 70%;top: 2%;">
+				<img src="assets/img/jiantou-wx.png" style="width: 100px;" />
+			</div>
+			<div style="z-index: 100;position: fixed;left: 34%;top: 22%;color: black;font-weight: bold;">
+				点击屏幕右上角[...]
+			</div>
+			<div style="z-index: 100;position: fixed;left: 37%;top: 25%;color: black;font-weight: bold;">
+				用&nbsp;浏览器&nbsp;打开
+			</div>
+			<div style="z-index: 100;position: fixed;left: 10%;top: 50%;">
+				<img src="assets/img/open-wx-img.png" style="width: 90%;"/>
+			</div>
+			<div style="background: #d6d6d6; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%;opacity: 0.5;z-index: 5;"></div>
+		</div>
+		
+		<script src="assets/js/index.js"></script>
+		<script src="assets/js/jquery.js"></script>
+		<script>
+			function isWx() {
+			　　var ua = navigator.userAgent.toLowerCase();
+			　　return ua.indexOf('micromessenger') != -1;
+			}
+			
+			function GetQueryValue(queryName) {
+				var reg = new RegExp("(^|&)" + queryName + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if ( r != null ){
+				   return decodeURI(r[2]);
+				}else{
+				   return null;
+				}
+			}	
+		
+			window.onload = function () {
+				// if (isWx()) {
+				// 	$("#cover").show()
+				// 	return
+				// }
+				var t = GetQueryValue("t")
+				if (t != null && t != '') {
+					switch (t){
+						case "stxdoeo0":  //苹果下载教程
+							window.location.href = "help/appstore.html"
+							break;
+						case "t3gu23za":  //苹果下载地址
+							window.location.href = "https://apps.apple.com/hk/app/%E8%B5%9B%E7%9B%BEvpn/id6476829505"
+							setTimeout(function(){
+									window.location.href = "help/appstore.html"
+							},100)
+							break;
+						case "u5q6ok55":  //安卓下载地址
+							gotoDownloadAndroidPage()
+							break;
+						case "8u5v7led":  //官网
+							window.location.href = "index.html"
+							break;
+						case "wjn5nwxb":  //客服
+							window.location.href = "http://xkf.zhimakf.com/s/107176gz41"
+							break;	
+						case "e0trcq2y":  //windows
+							gotoDownloadWinPage()
+							break;	
+						default:
+							window.location.href = "index.html"
+							break;
+					}
+				}else {
+					window.location.href = "index.html"
+				}
+			}
+		</script>
+	</body>
+</html>
