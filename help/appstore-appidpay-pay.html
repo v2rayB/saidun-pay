@@ -1,0 +1,449 @@
+<html lang="zh" class="ios iphone mobile portrait" data-dpr="1" style="font-size: 42.8px;">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
+		<title>赛盾VPN-购买海外ID</title>
+		<link rel="stylesheet" href="css/layui.css" type="text/css" media="all">
+		<style>
+			.loading {
+				position: fixed;
+				left: 38%;
+				top: 44%;
+				animation: loading 2s infinite;
+			}
+			
+			@keyframes loading {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			
+			.triangle {
+				width: 0;
+				height: 0;
+				border-top: 1.20773rem solid #acbbc1;
+				border-right: 1.20773rem solid transparent;
+				position: absolute;
+				margin-top: -2px;
+				margin-left: -2px;
+			}
+			
+			.pay-sel {
+				height: 140px;
+				width: 44%;
+				margin-left: 3%;
+				margin-right: 3%;
+				margin-top: 2%;
+				color: #FFFFFF;
+				background-color: #337FF2;
+				border-radius: 5px;
+				box-shadow: 6px 6px 3px #888888;
+			}
+			
+			.pay-nosel {
+				height: 140px;
+				width: 44%;
+				margin-left: 3%;
+				margin-right: 3%;
+				margin-top: 2%;
+				color: #FFFFFF;
+				background-color: #FFFFFF;
+				border-radius: 5px;
+				box-shadow: 6px 6px 3px #888888;
+			}
+		</style>
+	</head>
+	<body style="margin: 0;background: url('img/appstore-appidpay-chat/bg.png') no-repeat;background-size:cover;background-color: white;">
+		<div id="app" >
+			<div style="font-size: 28px;color: black;text-align: center;font-weight: bold;margin-top: 50px;">港区美区-海外ID购买</div>
+			<div style="color: #353535;text-align: center;font-weight: bold;margin-top: 10px;
+			display: flex;justify-content: center;align-items: center;">
+				<div style="font-size: 14px;margin-bottom: 1px;">①</div>
+				<div style="font-size: 14px;margin-left: 5px;">选择区域购买海外ID</div>
+			</div>
+			<div style="display: flex;flex-wrap: wrap;">
+				<div v-for="(item,index) in packageList" :class="item.selected==0?'pay-nosel':'pay-sel'" @click="switchPackage(index)">
+					<div :style="item.selected==1?'color: white;font-size: 20px;margin-left: 20px;margin-top: 20px;':'color: black;font-size: 20px;margin-left: 20px;margin-top: 20px;'">
+						{{item.name}}
+					</div>
+					<div :style="item.selected==1?'color: white;font-size: 24px;margin-left: 20px;margin-top: 5px;font-weight: bold;height:31px':'color: black;font-size: 24px;margin-left: 20px;margin-top: 5px;font-weight: bold;height:31px'">{{item.money}}</div>
+					<div v-else style="display: flex;height: 31px;align-items: center;margin-top: 5px;">
+						<div style="margin-left: 20px;"><img src="img/appstore-appidpay-chat/ins.png" style="width: 20px;"/></div>
+						<div style="margin-left: 10px;"><img src="img/appstore-appidpay-chat/facebook.png" style="width: 20px;"/></div>
+						<div style="margin-left: 10px;"><img src="img/appstore-appidpay-chat/youtube.png" style="width: 20px;"/></div>
+						<div style="margin-left: 10px;"><img src="img/appstore-appidpay-chat/x.png" style="width: 20px;"/></div>
+					</div>
+					<div  @click="thePay(index)" :style="item.selected==1?'height: 26px;width: 45%;display: flex;justify-content: center;align-items: center;margin-top: 10px;margin-left: 20px;background-color: #ffffff;border-radius: 5px;color: #337FF2;font-weight: bold;font-size: 16px;':'height: 26px;width: 45%;display: flex;justify-content: center;align-items: center;margin-top: 10px;margin-left: 20px;background-color: #337FF2;border-radius: 5px;color: #ffffff;font-weight: bold;font-size: 16px;'">
+						立即购买
+					</div>
+				</div>
+				
+				<div  class="pay-nosel">
+					<div style="color: black;font-size: 20px;margin-left: 20px;margin-top: 5px;">其他</div>
+					<div style="color: black;font-size: 20px;margin-left: 20px;margin-top: 5px;">
+						全球账号专营
+					</div>
+					<div style="display: flex;height: 31px;align-items: center;margin-top: 5px;">
+						<div style="margin-left: 20px;"><img src="img/appstore-appidpay-chat/ins.png" style="width: 20px;"/></div>
+						<div style="margin-left: 10px;"><img src="img/appstore-appidpay-chat/facebook.png" style="width: 20px;"/></div>
+						<div style="margin-left: 10px;"><img src="img/appstore-appidpay-chat/youtube.png" style="width: 20px;"/></div>
+						<div style="margin-left: 10px;"><img src="img/appstore-appidpay-chat/x.png" style="width: 20px;"/></div>
+					</div>
+					<div  @click="gotoStore()" style="height: 26px;width: 45%;display: flex;justify-content: center;align-items: center;
+					margin-top: 5px;margin-left: 20px;background-color: #337FF2;
+					border-radius: 5px;color: #ffffff;font-weight: bold;font-size: 16px;">
+						立即抢购
+					</div>
+				</div>
+			</div>
+			
+			<!-- <div style="display: flex;margin-left: 3%;margin-top: 20px;align-items: center;">
+				<div style="font-size: 18px;color: red;">请填写您的发货邮箱：</div>
+				<div style=""><input v-model="fhEmail" type="text" style="width: 180px;height: 36px;" /></div>
+			</div> -->
+			
+			<div style="color: #353535;text-align: center;font-weight: bold;margin-top: 10px;
+			display: flex;justify-content: center;align-items: center;">
+				<div style="font-size: 14px;margin-bottom: 1px;">②</div>
+				<div style="font-size: 14px;margin-left: 5px;">选择支付方式 </div>
+			</div>
+			<div  @click="selPayType(1)" :style="curPay==1?'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #337FF2;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;':'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #9e9e9e;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;'">
+				<div style="flex: 1;text-align: right;"><img src="img/appstore-appidpay-chat/zhifubao.png" style="height: 46px;width: 46px;"/></div>
+				<div style="color: #353535;font-size: 24px;flex: 3;text-align: left;margin-left: 10px;font-weight: bold;">支付宝</div>
+				<div style="flex: 1;"><img :src="curPay==1?'img/appstore-appidpay-chat/g-1.png':'img/appstore-appidpay-chat/g-0.png'" style="height: 26px;width: 26px;"/></div>
+			</div>
+			<!-- <div @click="selPayType(2)" :style="curPay==2?'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #337FF2;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;':'display: flex;width: 90%;margin-left: 5%;background-color: white;border: 2px solid #9e9e9e;border-radius: 8px;height: 60px;align-items: center;margin-top: 20px;'">
+				<div style="flex: 1;text-align: right;"><img src="img/appstore-appidpay-chat/weixin.png" style="height: 46px;width: 46px;"/></div>
+				<div style="color: #353535;font-size: 24px;flex: 3;text-align: left;margin-left: 10px;font-weight: bold;">微信</div>
+				<div style="flex: 1;"><img :src="curPay==2?'img/appstore-appidpay-chat/g-1.png':'img/appstore-appidpay-chat/g-0.png'" style="height: 26px;width: 26px;"/></div>
+			</div> -->
+			<div style="text-align: center;margin-top: 10px;">丢失的无法找回，购买成功后请记得及时保存哦</div>
+			<div style="display: flex;width: 90%;margin-left: 5%;background-color: #337FF2;height: 56px;
+			border-radius: 30px;justify-content: center;align-items: center;margin-top: 20px;" @click="pay()">
+				<div style="color: white;font-size: 25px;font-weight: bold;">付款</div>
+				<div style="color: white;font-size: 25px;margin-left: 10px;font-weight: bold;">{{curPrice}}</div>
+			</div>
+			
+			<form :action="GoodPayUrl" method="post" id="goodPay" style="display: none;">
+				<input name="pid" id="goodPay-pid"/>
+				<input name="type" id="goodPay-type"/>
+				<input name="out_trade_no"  id="goodPay-out_trade_no"/>
+				<input name="notify_url" id="goodPay-notify_url"/>
+				<input name="return_url"  id="goodPay-return_url"/>
+				<input name="name" id="goodPay-name"/>
+				<input name="money"  id="goodPay-money"/>
+				
+				<input name="sign" id="goodPay-sign"/>
+				<input name="sign_type" id="goodPay-sign_type"/>
+			</form>
+			<div v-if="isLoading" class="loading"><img src="img/appstore-appidpay-chat/loading.png"/></div>
+		</div>
+		
+		<script src="../assets/js/index.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/axios.js"></script>
+		<script src="../assets/js/vue.js"></script>
+		<script src="../assets/layui/layui.js"></script>
+		<script>
+			layui.use(['layer'], function() {
+				var layer = layui.layer;
+			});
+			new Vue({
+				el: '#app',
+				data: {
+					token: localStorage.getItem("token_id"),
+					curPid: 1,
+					curPay: 1,
+					curPrice: '￥18.00',
+					fhEmail: '',
+					GoodPayUrl: "",
+					isLoading: false,
+					appidInfo: {},
+					webUrl : "http://" + document.domain + "/help/appstore-appidpay-chat.html",
+					packageList: [
+						{
+							id: 1,
+							country: "HK",
+							name: "港区ID",
+							money: "￥18.00",
+							selected: 1,
+						},
+						{
+							id: 2,
+							country: "USA",
+							name: "美区ID",
+							money: "￥18.00",
+							selected: 0,
+						},
+						{
+							id: 3,
+							country: "KR",
+							name: "韩区ID",
+							money: "￥18.00",
+							selected: 0,
+						},
+						{
+							id: 4,
+							country: "UK",
+							name: "英区ID",
+							money: "￥18.00",
+							selected: 0,
+						},
+						{
+							id: 5,
+							country: "JPN",
+							name: "日本区ID",
+							money: "￥18.00",
+							selected: 0,
+						},
+					],
+				},
+				methods: {
+					gotoStore() {
+						window.location.href = "../store/index.html"
+					},
+					init: function() {
+						var that = this
+						axios({
+							method: 'get',
+							url: serverIp + '/vpn/pkg/index',
+							headers: {
+								'xk-token': this.token,
+							}
+						}).then(function(response) {
+							var data = response.data;
+							if (data.code != 200) {
+								alert("当前未登录，请先登录再进行支付")
+								return
+							}
+							that.GoodPayUrl = data.result.good_pay_url
+						})
+						
+						axios({
+							method: 'get',
+							url: serverIp + '/vpn/appid_info',
+							headers: {
+								'xk-token': this.token,
+							}
+						}).then(function(response) {
+							var data = response.data;
+							if (data.code != 200) {
+								alert("当前未登录，请先登录再进行支付")
+								return
+							}
+							that.appidInfo = data.result
+							
+							for (var i=0;i<that.packageList.length;i++) {
+								var item = that.packageList[i]
+								switch (item.country){
+									case "HK":
+										if (!that.appidInfo.HK) {
+											that.packageList[i].name = item.name + "(已售完)"
+										}
+										break;
+									case "USA":
+										if (!that.appidInfo.USA) {
+											that.packageList[i].name = item.name + "(已售完)"
+										}
+										break;
+									case "KR":
+										if (!that.appidInfo.KR) {
+											that.packageList[i].name = item.name + "(已售完)"
+										}
+										break;
+									case "CN":
+										if (!that.appidInfo.CN) {
+											that.packageList[i].name = item.name + "(已售完)"
+										}
+										break;
+									case "JPN":
+										if (!that.appidInfo.JPN) {
+											that.packageList[i].name = item.name + "(已售完)"
+										}
+										break;
+									case "UK":
+										if (!that.appidInfo.UK) {
+											that.packageList[i].name = item.name + "(已售完)"
+										}
+										break;
+									default:
+										break;
+								}
+							}
+							that.$forceUpdate()
+						})
+					},
+					thePay: function(index) {
+						this.switchPackage(index)
+						if (this.token == "" || this.token == undefined) {
+							this.token = generateUUID()
+							localStorage.setItem("token_id",this.token)
+						}
+						if (this.curPay == 2) {
+							this.goodPay()
+						}else {
+							this.goodPay()
+						}
+					},
+					pay: function() {
+						if (this.token == "" || this.token == undefined) {
+							this.token = generateUUID()
+							localStorage.setItem("token_id",this.token)
+						}
+						if (this.curPay == 2) {
+							this.goodPay()
+						}else {
+							this.goodPay()
+						}
+					},
+					switchPackage: function(index) {
+						for (var item of this.packageList) {
+							item.selected = 0
+						}
+						this.packageList[index].selected = 1
+						this.curPid = this.packageList[index].id
+						this.curPrice = this.packageList[index].money
+					},
+					selPayType: function(payType) {
+						this.curPay = payType
+					},
+					goodPay: function() {
+						this.isLoading = true
+						var that = this
+						var data = new FormData();
+						data.append('pkg_id', this.curPid);
+						data.append('pay_type', this.curPay);
+						data.append('web_url', this.webUrl);
+						data.append('token_id', this.token);
+						data.append('email', this.fhEmail);
+						axios({
+								method: 'post',
+								url: serverIp + '/vpn/appid_pay_good',
+								data: data
+							})
+							.then(function(response) {
+								that.isLoading = false
+								var data = response.data;
+								if (data.code != 200) {
+									alert(data.remark)
+									return
+								}
+								var goodPay = data.result
+								$("#goodPay-pid").val(goodPay.pid)
+								$("#goodPay-type").val(goodPay.type)
+								$("#goodPay-out_trade_no").val(goodPay.out_trade_no)
+								$("#goodPay-notify_url").val(goodPay.notify_url)
+								$("#goodPay-return_url").val(goodPay.return_url)
+								$("#goodPay-name").val(goodPay.name)
+								$("#goodPay-money").val(goodPay.money)
+								$("#goodPay-sign").val(goodPay.sign)
+								$("#goodPay-sign_type").val(goodPay.sign_type)
+								$("#goodPay").submit()
+								localStorage.setItem("saidun_order_no",goodPay.out_trade_no)
+								
+								layer.open({
+									title: '正在支付中...',
+									btn:['已完成支付','取消'],
+									content: '支付完成前，请不要关闭此窗口，若付款过程中遇到问题，请随时联系在线客服。',
+									yes: function(index,layero) {
+										
+										axios({
+											method: 'get',
+											url: serverIp + '/vpn/pay_status?orderNo='+localStorage.getItem("saidun_order_no"),
+										}).then(function(response) {
+											if (response.data.code == 200) {
+												if (response.data.result) {
+													alert("已完成支付，请返回APP查收!")
+													layer.close(index);
+													location.reload()
+												}else {
+													alert("未检测到订单支付成功，请先完成支付")
+												}
+											} else if (response.data.code == 401) {
+												alert("登录信息已过期,请重新登录")
+												layer.close(index);
+											}  else {
+												alert(response.data.msg)
+												layer.close(index);
+											}
+										})
+									}
+								});
+								
+							})
+					},
+					ybPay: function() {
+						this.isLoading = true
+						var that = this
+						var data = new FormData();
+						data.append('pkg_id', this.curPid);
+						data.append('pay_type', 2);
+						data.append('web_url', this.webUrl);
+						data.append('token_id', this.token);
+						data.append('email', this.fhEmail);
+						axios({
+								method: 'post',
+								url: serverIp + '/vpn/appid_pay_yb',
+								data: data
+							})
+							.then(function(response) {
+								that.isLoading = false
+								var data = response.data;
+								if (data.code != 200) {
+									alert(data.remark)
+									return
+								}
+								localStorage.setItem("saidun_order_no",data.result.mchOrderNo)
+								window.location.href =  data.result.codeUrl
+								
+								layer.open({
+									title: '正在支付中...',
+									btn:['已完成支付','取消'],
+									content: '支付完成前，请不要关闭此窗口，若付款过程中遇到问题，请随时联系在线客服。',
+									yes: function(index,layero) {
+										
+										axios({
+											method: 'get',
+											url: serverIp + '/vpn/pay_status?orderNo='+localStorage.getItem("saidun_order_no"),
+										}).then(function(response) {
+											if (response.data.code == 200) {
+												if (response.data.result) {
+													alert("已完成支付，请返回APP查收!")
+													layer.close(index);
+													location.reload()
+												}else {
+													alert("未检测到订单支付成功，请先完成支付")
+												}
+											} else if (response.data.code == 401) {
+												alert("登录信息已过期,请重新登录")
+												layer.close(index);
+											}  else {
+												alert(response.data.msg)
+												layer.close(index);
+											}
+										})
+									}
+								});
+							})
+					},
+				},
+				created: function() {
+					this.init()
+				}
+			})
+			
+			function generateUUID() {
+				var d = new Date().getTime();
+				var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+					var r = (d + Math.random()*16)%16 | 0;
+					d = Math.floor(d/16);
+					return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+				});
+				return uuid;
+			}
+		</script>
+	</body>
+</html>
