@@ -652,11 +652,22 @@
 					$("#menu0").show()
 					
 					this.token = localStorage.getItem("saidun-token")
-					if (this.token != null) {
-						this.init()
+					if (this.token == null || this.token == '') {
+						this.token = GetQueryValue("s")
 					}
+					this.init()
 				}
 			})
+
+			function GetQueryValue(queryName) {
+				var reg = new RegExp("(^|&)" + queryName + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if ( r != null ){
+				   return decodeURI(r[2]);
+				}else{
+				   return null;
+				}
+			}
 		</script>
 	</body>
 </html>
