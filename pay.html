@@ -602,6 +602,10 @@
 								if (that.vipInfo == "未开通会员") {
 									that.vipInfo = "0"
 								}
+								if (response.data.result.version > "1.4.7") {
+									that.packageList[2].priceDesc = "￥198.00"
+									that.packageList[3].priceDesc = "￥338.00"
+								}
 							} else if (response.data.code == 401) {
 								alert("登录信息已过期,请重新登录")
 							}  else {
