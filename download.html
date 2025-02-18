@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="renderer" content="webkit|ie-comp">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="format-detection" ,="" content="telephone=no">
+		<meta name="format-detection" ,="" content="email=no">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<link rel="icon" href="/favicon.ico">
+		<title>赛盾VPN-下载</title>
+	</head>
+	<body style="margin: 0;background-color: white;">
+		<div id = "app">
+			<div style="height: 80px;background-color: #337FF2;width: 100%;position: fixed;left: 0;
+			top: 0;display: flex;align-items: center;">
+				<div style="display: flex;justify-content: left;align-items: center;flex: 1;margin-left: 20px;" @click="gotoIndex()">
+					<div><img src="assets/img/logo.png" style="height: 40px;width: 40px;"/></div>
+					<div style="color: white;font-weight: bold;margin-left: 5px;font-size: 24px;">赛盾VPN</div>
+				</div>
+				
+				<div style="flex: 1;display: flex;align-items: center;justify-content: right;">
+					<div style="color: white;font-size: 18px;margin-right: 10px;" @click="gotoIndex()">主页</div>
+					<div style="display: flex;align-items: center;border: 1px solid white;border-radius: 13px;
+					justify-content: center;height: 26px;margin-right: 10px;width: 100px;" @click="gotoLoginPage()" v-if="!isLogin">
+						<img src="assets/img/icon1.png" style="height: 12px;width: 12px;"/>
+						<div style="font-size: 12px;color: white;margin-left: 3px;">用户登录</div>
+					</div>
+					<div style="display: flex;align-items: center;border: 1px solid white;border-radius: 13px;
+					justify-content: center;height: 26px;margin-right: 10px;width: 100px;" @click="logout()" v-else>
+						<div style="font-size: 16px;color: white;margin-left: 3px;">退出登录</div>
+					</div>
+					<div @click="showMenu()" style="margin-right: 20px;" v-if="selMenu=='sandian'"><img  src="assets/img/sandian-1.png" style="width: 26px;height: 8px;"/></div>
+					<div @click="showMenu()" style="margin-right: 20px;" v-else>
+						<img  src="assets/img/sandian.png" style="width: 26px;height: 8px;"/>
+					</div>
+				</div>
+			</div>
+			<div v-show="isShowMenu" id="menu0" style="position: fixed;background-color: white;width: 130px;height: 180px;right: 3px;top: 83px;display: none;">
+				<div @click="gotoPayPage()" style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #337FF2;margin-top: 10px;">会员购买</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="gotoHelpPage()">常见问题</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="gotoLoginPage()">账号登录</div>
+				<div @click="showLanguage" style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-bottom: 10px;">
+					<div>简体中文</div>
+					<div style="margin-left: 20px;"><img src="assets/img/xiangyou.png" style="width: 10px;height: 10px;"/></div>
+				</div>
+			</div>
+			<div  v-show="isShowLanguage" id="language" style="position: fixed;background-color: white;width: 130px;height: 90px;right: 136px;top: 213px;display: none;">
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;margin-top: 5px;" @click="switchLanguage('en')">English</div>
+				<div style="font-size: 18px;margin-left: 10px;height: 40px;display: flex;align-items: center;color: #505050;" @click="switchLanguage('cn')">简体中文</div>
+			</div>
+			<div style="position: fixed;right: 10px;bottom: 10px;"><img onclick="gotoKfLink()" src="assets/img/kf.png" style="width:48px"/></div>
+			
+			<div style="height: 50px;display: flex;background-color: rgb(238, 238, 240);width: 100%;margin-top: 80px;">
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('ios')">
+					<div><img :src="dMenu=='ios'?'assets/img/mios-1.png':'assets/img/mios-0.png'" style="height: 24px;width: 24px;"/></div>
+					<div :style="dMenu=='ios'?'font-weight: bold;font-size: 16px;color: #337FF2;':'font-weight: bold;font-size: 16px;color: #707070;'">iOS</div>
+				</div>
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('android')">
+					<div><img :src="dMenu=='android'?'assets/img/mandroid-1.png':'assets/img/mandroid-0.png'" style="height: 24px;width: 24px;"/></div>
+					<div :style="dMenu=='android'?'font-weight: bold;font-size: 16px;color: #337FF2;':'font-weight: bold;font-size: 16px;color: #707070;'">Android</div>
+				</div>
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('windows')">
+					<div><img :src="dMenu=='windows'?'assets/img/mwindows-1.png':'assets/img/mwindows-0.png'" style="height: 24px;width: 24px;"/></div>
+					<div :style="dMenu=='windows'?'font-weight: bold;font-size: 16px;color: #337FF2;':'font-weight: bold;font-size: 16px;color: #707070;'">Windows</div>
+				</div>
+				<div style="display: flex;justify-content: center;align-items: center;flex: 1;" @click="changeDownloadType('mac')">
+					<div><img :src="dMenu=='mac'?'assets/img/mac-1.png':'assets/img/mac-0.png'" style="height: 24px;width: 24px;"/></div>
+					<div :style="dMenu=='mac'?'font-weight: bold;font-size: 16px;color: #337FF2;':'font-weight: bold;font-size: 16px;color: #707070;'">MacOS</div>
+				</div>
+			</div>
+			<div style="background: url('assets/img/bg1.png') no-repeat;background-size:100% 100%;height: auto;">
+				<div v-show="dMenu=='ios'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;justify-content: center;padding-top: 30px;align-items: center;">
+						<div>下载</div>
+						<div style="color: #337FF2;margin-top: 3px;">iOS</div>
+						<div>版赛盾VPN应用</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">支持 iOS 15+ 系统</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">适用于 iPhone 13、12、11、SE、XS、XR；iPad Pro、Air 和 Mini </div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">最高安全 ECC 加密技术，保护数据隐私安全 </div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">突破限制，轻松解锁热门流媒体和手游 </div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;">
+						<div style="background-color: #337FF2;width: 120px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoIosAppStoreAndHelp()">极速下载</div>
+					</div>
+					
+				</div>
+				<div v-show="dMenu=='android'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;justify-content: center;padding-top: 30px;align-items: center;">
+						<div>下载</div>
+						<div style="color: #337FF2;margin-top: 3px;">Android</div>
+						<div>版赛盾VPN应用</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">支持 Android 15、Android 14、Android 13、Android 12、Android 11、Android 10、Android 9、Android 8、Android 7、Android 6 和 Android 5 系统版本 </div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">3000+ 全球服务器配置，无限流量不限速度 </div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">突破限制，轻松解锁热门流媒体和手游  </div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">最高安全 ECC 加密技术，保护数据隐私安全  </div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;">
+						<div style="background-color: #337FF2;width: 120px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoDownloadAndroidPage()">极速下载</div>
+					</div>
+					
+				</div>
+				<div v-show="dMenu=='windows'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;justify-content: center;padding-top: 30px;align-items: center;">
+						<div>下载</div>
+						<div style="color: #337FF2;margin-top: 3px;">Windows</div>
+						<div>版赛盾VPN应用</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;align-items: center;">
+							<div>*</div>
+							<div style="font-size: 14px;margin-left: 10px;">支持 : Windows10及以上</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div>*</div>
+							<div style="font-size: 14px;margin-left: 10px;">为您的电脑下载适用于Windows版的绿色安全VPN，全面保护您的在线隐私，无限制无障碍地畅游全球网络。</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">无需注册，无需订阅，无限流量，无限带宽，无日志</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">行业内顶尖加密技术保障通信安全，保障您得IP地址不被非法追踪</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">新用户首次使用可获得免费试用时长，先体验，后决定是否为其付费</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">全天在线一对一人工客服服务，给您满满的安全感</div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;">
+						<div style="background-color: #337FF2;width: 120px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoDownloadWinPage()">极速下载</div>
+					</div>
+					
+				</div>
+				
+				<div v-show="dMenu=='mac'">
+					<div style="display: flex;font-size: 26px;font-weight: bold;justify-content: center;padding-top: 30px;align-items: center;">
+						<div>下载</div>
+						<div style="color: #337FF2;margin-top: 3px;">MacOS</div>
+						<div>版赛盾VPN应用</div>
+					</div>
+					<div style="margin-left: 20px;margin-top: 20px;">
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">无需注册，无需订阅，无限流量，无限带宽，无日志</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">行业内顶尖加密技术保障通信安全，保障您得IP地址不被非法追踪</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">新用户首次使用可获得免费试用时长，先体验，后决定是否为其付费</div>
+						</div>
+						<div style="display: flex;margin-top: 20px;align-items: center;">
+							<div><img src="assets/img/dgou.png" style="width: 20px;height: 20px;"/></div>
+							<div style="font-size: 14px;margin-left: 10px;">全天在线一对一人工客服服务，给您满满的安全感</div>
+						</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-top: 30px;margin-bottom: 30px;display: flex;">
+						<div style="background-color: #337FF2;width: 140px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;" onclick="gotoDownloadMacPage(1)">Intel芯片版</div>
+						<div style="background-color: #337FF2;width: 140px;height: 40px;border-radius: 20px;display: flex;
+						align-items: center;justify-content: center;font-weight: bold;margin-left: 10px;" onclick="gotoDownloadMacPage(2)">Apple芯片版</div>
+					</div>
+					
+					<div style="margin-left: 20px;margin-bottom: 30px;">
+						<div style="font-size: 16px;font-weight: bold;">如何确认芯片类型</div>
+						<div style="display: flex;align-items: center;margin-top: 5px;">
+							<div>1.点击左上角</div>
+							<div><img src="assets/img/ios-macos-1.png" style="width: 20px;"/></div>
+							<div>菜单，点击<span style="font-weight: bold;">关于本机</span></div>
+						</div>
+						<div style="margin-top: 5px;">
+							2.在<span style="font-weight: bold;">概览</span>页面的<span style="font-weight: bold;">处理器</span>
+							一栏，查看芯片类型是“<span style="font-weight: bold;">Intel</span>”还是“
+							<span style="font-weight: bold;">Apple</span>”，并选择下载对应版本
+						</div>
+					</div>
+					
+					
+				</div>
+				
+				
+				<div style="background-color: #919191;height: 1px;"></div>
+				
+				<div style="display: flex;width: 82%;justify-content: space-between;margin-left: 9%;margin-top: 20px;">
+					<div style="text-align: left;">
+						<div style="font-weight: bold;font-size: 25px;color: #121212;">下载客户端</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;" onclick="gotoIosAppStore()">iOS版本下载</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;" onclick="gotoDownloadAndroidPage()">Android版本下载</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;" onclick="gotoDownloadWinPage()">Windows版本下载</div>
+						<div style="font-weight: bold;font-size: 12px;margin-top: 20px;color: #424242;">官网永久二维码, 永不丢失</div>
+						<div style="font-weight: bold;font-size: 12px;color: #424242;">建议长按二维码保存图片</div>
+						<div style="margin-top: 10px;"><img src="assets/img/webqrcode0.png" style="width: 100px;height: 100px;"/></div>
+					</div>
+					<div style="text-align: right;">
+						<div style="font-weight: bold;font-size: 25px;color: #121212;">关于我们</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;">公司介绍</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;" onclick="gotoPrivite()">隐私协议</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;" onclick="gotoUser()">服务协议</div>
+						<div style="font-weight: bold;font-size: 20px;margin-top: 20px;color: #424242;" onclick="showEmail()">
+							推广挣钱
+						</div>
+					</div>
+				</div>
+				<div style="height: 20px;"></div>
+				<hr />
+				<div style="text-align: center;margin-top: 30px;">© 2024 Seton VPN. All rights reserved. </div>
+				<div style="height: 50px;"></div>
+				
+			</div>
+			
+		</div>
+		
+		<script src="assets/js/index.js"></script>
+		<script src="assets/js/jquery.js"></script>
+		<script src="assets/js/axios.js"></script>
+		<script src="assets/js/vue.js"></script>
+		<script>
+			gotoKfLink = function() {
+				window.location.href = "http://xkf.zhimakf.com/s/107176gz41"
+			};
+			gotoIosAppStoreAndHelp = function() {
+				window.location.href = "https://apps.apple.com/hk/app/%E8%B5%9B%E7%9B%BEvpn/id6476829505"
+				setTimeout(function(){
+						window.location.href = "help/appstore.html"
+				},100)
+			
+			};
+			new Vue({
+				el: '#app',
+				data: {
+					selMenu:'',
+					isShowMenu:false,
+					isShowLanguage:false,
+					isLogin: false,
+					token: '',
+					dMenu: 'ios',
+				},
+				methods: {
+					changeDownloadType(type) {
+						this.dMenu = type
+					},
+					switchLanguage(language) {
+						if (language == "en") {  //切换到英文
+							window.location.href = "en/download.html"
+						}else {  //切换到中文
+						window.location.href = "download.html"
+						}
+					},
+					showMenu() {
+						if (this.isShowMenu){
+							this.isShowMenu = false
+							this.isShowLanguage = false
+							this.selMenu = ''
+						}else {
+							this.isShowMenu = true
+							this.selMenu = 'sandian'
+						}
+					},
+					showLanguage() {
+						if (this.isShowLanguage) {
+							this.isShowLanguage = false
+						}else {
+							this.isShowLanguage =  true
+						}
+					},
+					init: function() {
+						this.isLogin = true
+					},
+					logout: function() {
+						if (confirm("您确定要退出登录吗?")) {
+							localStorage.removeItem("saidun-token")
+							this.username = ""
+							this.vipInfo = ""
+							this.token = null
+							this.isLogin = false
+						}
+					},
+					gotoLoginPage: function() {
+						window.location.href = "login.html"
+					},
+					gotoHelpPage: function() {
+						window.location.href = "help.html"
+					},
+					gotoPayPage: function() {
+						window.location.href = "pay.html"
+					},
+					gotoIndex: function() {
+						window.location.href = "index.html"
+					},
+				},
+				created: function() {
+					$("#language").show()
+					$("#menu0").show()
+					
+					this.token = localStorage.getItem("saidun-token")
+					if (this.token != null) {
+						this.init()
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
