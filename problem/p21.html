@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="renderer" content="webkit|ie-comp">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="format-detection" ,="" content="telephone=no">
+		<meta name="format-detection" ,="" content="email=no">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<link rel="icon" href=".../favicon.ico">
+		<title>赛盾VPN-如何恢复 ID 变化导致丢失的购买时间</title>
+	</head>
+	<body style="margin: 0;background-color: #F4F9FC;">
+		<div id = "app">
+			<div style="position: fixed;right: 10px;bottom: 70px;"><img onclick="gotoKfLink()" src="../assets/img/kf.png" style="width:48px"/></div>
+			
+			<div style="margin-top: 0;">
+				
+				<div style="height: 150px;background-image: linear-gradient(to bottom, #327EF3, #0E62FF);display: flex;">
+					<div style="flex: 2;">
+						<div style="display: flex;margin-left: 30px;margin-top: 30px;align-items: center;" @click="gotoHelp()">
+							<div><img src="imgs/back.png" style="width: 12px;height: 20px;"/></div>
+							<div style="margin-left: 10px;color: white;font-size: 21px;">返回</div>
+						</div>
+						<div style="color: white;font-size: 18px;margin-left: 40px;margin-top: 15px;">
+							<div>欢迎查看常见问题</div>
+							<div>智慧服务，让您使用更简单</div>
+						</div>
+					</div>
+					<div style="flex: 1;display: flex;align-items: flex-end;">
+						<div><img src="imgs/h1.png" style="width: 160px;"/></div>
+					</div>
+				</div>
+				<div style="background-color: #F4F9FC;height: auto;border-radius: 20px;margin-top: -10px;margin-bottom: 50px;">
+					
+					<div style="margin-left: 20px;margin-top: 40px;margin-right: 20px;font-size: 16px;font-family: PingFang-SC-Medium;
+					color: #181818;">
+						<div style="font-weight: bold;font-size: 23px;">如何恢复 ID 变化导致丢失的购买时间</div>
+						<div style="margin-top: 20px;color: #9D9D9D;">过去购买的时间可以通过本说明的流程帮您找回来</div>
+						<div style="margin-top: 10px;margin-bottom: 10px;">您在电脑或者手机中卸载重装 赛盾VPN 并不会引起设备 ID 的变化，但是若您刷机或者重做操作系统，那么设备 ID 会发生改变。若您之前未注册账户，那么您以前购买的时间可能会消失。</div>
+						<div style="margin-top: 10px;margin-bottom: 10px;">请您放心，通过这个文章说明的流程，我们将为您快速的找回来。不过还是强烈建议您在找回后，参考<a href="p47.html"><span style="color:#2876F6">《只需一份费用多个设备同时使用赛盾 VPN》</span></a>的说明注册一个账户</div>
+						
+						
+						<div style="font-weight: bold;font-size: 20px;margin-top: 30px;">找回账户我们需要如下的信息：</div>
+						<div style="margin-top: 10px;">1.您当前的新设备 ID</div>
+						<div style="margin-top: 10px;">2.过去您的充值记录详情截图</div>
+						<div style="margin-top: 10px;">3.若您能够提供原设备 ID 会加快我们处理的过程</div>
+						<div style="margin-top: 10px;margin-bottom: 10px;">对于充值记录详情，若您不知道如何查找，请您参考<a href="p22.html"><span style="color:#2876F6">《如何查找赛盾 VPN 支付详情信息》</span></a>文件的说明。</div>
+						
+						
+						<div style="margin-top: 40px;">若您无法提供这个充值记录详情截图，我们将无法受理您的要求，因为我们无法在海量的赛盾VPN支付记录找到您指定的金额记录。若我们没有证据而冒然处理，这将会有严重的安全和法律风险。</div>
+						
+						<div style="margin-top: 50px;">注:若您在下载和使用过程中有任何问题，您随时可以发送邮件给 <span style="color:red;">{{kfEmail}}</span>，将由专业的客户服务人员帮助您获取到最新版本的软件。</div>
+					</div>
+						
+			</div>
+		</div>
+		
+		<script src="../assets/js/index.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/vue.js"></script>
+		<script>
+			gotoChatGPT = function() {
+				window.location.href = "https://chat.openai.com/"
+			};
+			
+			gotoKfLink = function() {
+				window.location.href = "http://xkf.zhimakf.com/s/107176gz41"
+			};
+			
+			new Vue({
+				el: '#app',
+				data: {
+					mt: 1,
+					downloadLink: 'http://www.saiduna.com/download.html',
+					kfEmail: 'saidunyouxiang@gmail.com',
+					webLink: 'http://www.saiduna.com'
+				},
+				methods: {
+					changeMT(mt) {
+						this.mt = mt
+					},
+					gotoProblem(page){
+						window.location.href = "problem/"+page+".html"
+					},
+					gotoHelp(){
+						window.location.href = "../help.html"
+					},
+					gotoHome() {
+						window.location.href = "../index.html"
+					}
+				},
+				created: function() {
+				}
+			})
+		</script>
+	</body>
+</html>

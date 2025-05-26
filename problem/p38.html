@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="renderer" content="webkit|ie-comp">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<meta name="format-detection" ,="" content="telephone=no">
+		<meta name="format-detection" ,="" content="email=no">
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Cache" content="no-cache">
+		<link rel="icon" href=".../favicon.ico">
+		<title>赛盾VPN-Chrome 浏览器无法打开被墙网站怎么办?</title>
+	</head>
+	<body style="margin: 0;background-color: #F4F9FC;">
+		<div id = "app">
+			<div style="position: fixed;right: 10px;bottom: 70px;"><img onclick="gotoKfLink()" src="../assets/img/kf.png" style="width:48px"/></div>
+			
+			<div style="margin-top: 0;">
+				
+				<div style="height: 150px;background-image: linear-gradient(to bottom, #327EF3, #0E62FF);display: flex;">
+					<div style="flex: 2;">
+						<div style="display: flex;margin-left: 30px;margin-top: 30px;align-items: center;" @click="gotoHelp()">
+							<div><img src="imgs/back.png" style="width: 12px;height: 20px;"/></div>
+							<div style="margin-left: 10px;color: white;font-size: 21px;">返回</div>
+						</div>
+						<div style="color: white;font-size: 18px;margin-left: 40px;margin-top: 15px;">
+							<div>欢迎查看常见问题</div>
+							<div>智慧服务，让您使用更简单</div>
+						</div>
+					</div>
+					<div style="flex: 1;display: flex;align-items: flex-end;">
+						<div><img src="imgs/h1.png" style="width: 160px;"/></div>
+					</div>
+				</div>
+				<div style="background-color: #F4F9FC;height: auto;border-radius: 20px;margin-top: -10px;margin-bottom: 50px;">
+					
+					<div style="margin-left: 20px;margin-top: 40px;margin-right: 20px;font-size: 16px;font-family: PingFang-SC-Medium;
+					color: #181818;">
+						<div style="font-weight: bold;font-size: 23px;">Chrome 浏览器无法打开被墙网站怎么办?</div>
+						<div style="margin-top: 20px;color: #9D9D9D;">若您连接 VPN 后，使用 Chrome 浏览器访问被墙网站出现无法访问，访问速度慢的情况，请参考本篇文章解决这个问题</div>
+						<div style="margin-top: 10px;margin-bottom: 10px;">Chrome浏览器受到VPN用的喜爱,它兼容各种功能插件，还有自带的安全访问设置。但如果使用姿势不正确也会出现访问效果差，甚至无法访问网站的情况。具体情况及解决办法如下：</div>
+						<div style="margin-top: 10px;margin-bottom: 10px;"><span style="font-weight:bold;">第一种:浏览器插件影响</span>(以谷歌访问助手举例)谷歌访问助手是一款最常见的浏览器翻墙插件，它会严重干扰使用 VPN 后的访问效果，如何自检并解决:</div>
+
+						<div style="margin-top: 20px;">1.打开 Chrome 浏览器点击右上角三个点>更多工具>扩展程序</div>
+						<div style="margin-top: 10px;">2.找到代理类型的插件，点击移除(关闭插件依然会出现无法访问的情况)</div>
+						<div style="margin-top: 10px;">3.若 Chrome 浏览器登录了Google 账户,移除插件后,请退出 Google 账户重新登录(或使用无痕模式访问)</div>
+						<div style="margin-top: 10px;">4.完成以上步骤后重新打开浏览器访问即可</div>
+						<div style="text-align: center;margin-top: 20px;margin-bottom: 15px;"><img src="imgs/h109.png" style="width: 90%;"/></div>
+						
+						<div style="font-weight: bold;font-size: 20px;margin-top: 30px;">第二种:浏览器自带协议影响：</div>
+						<div style="margin-top: 5px;">QUIC 协议是 Chrome浏览器默认开启的实验性协议，会导致访问翻墙内容时速度变慢，甚至出现无法访问的情况，禁用此协议保证使用效果</div>
+						<div style="margin-top: 10px;">1.在 Chrome 浏览器中输入:chrome://flags/#enable-quic;</div>
+						<div style="margin-top: 10px;">2.找到 Experimental QUlC protocol 项</div>
+						<div style="margin-top: 10px;">3.点击后面选项框，选择 Disabled,</div>
+						<div style="margin-top: 10px;">4.完成以上步骤后，在浏览器重新访问要访问的内容即可。</div>
+						<div style="text-align: center;margin-top: 20px;margin-bottom: 15px;"><img src="imgs/h110.png" style="width: 90%;"/></div>
+						
+						<div style="font-weight: bold;font-size: 20px;margin-top: 30px;">第三种:浏览器的安全 DNS 设置:</div>
+						<div style="margin-top: 5px;">若您的电脑是Win7系统，在Chrome浏览器中个别网站无法访问。例如:Google，Youtube都正常Facebook访问不了。并且以上设置都无法解决可以尝试以下步骤</div>
+						<div style="text-align: center;margin-top: 20px;margin-bottom: 15px;"><img src="imgs/h111.png" style="width: 90%;"/></div>
+						<div style="margin-top: 10px;">1.打开 Chrome 浏览器点击右上角三个点>设置>隐私设置和安全性>安全>使用安全DNS</div>
+						<div style="margin-top: 10px;">2.把使用安全DNS后面的开关关闭</div>
+						<div style="margin-top: 10px;">3.在电脑桌面点击开始菜单，输入cmd，右击cmd,选择管理员运行</div>
+						<div style="margin-top: 10px;">4.在打开的 DOS窗囗中输入netsh winsockreset 回车 执行命令</div>
+						<div style="margin-top: 10px;">5.执行成功后会提示，重置成功，重启电脑后命令生效</div>
+						<div style="margin-top: 10px;">6.重启电脑后，打开chrome浏览器，访问之前无法访问的网站即可。</div>
+
+						<div style="margin-top: 50px;">注:若您在下载和使用过程中有任何问题，您随时可以发送邮件给 <span style="color:red;">{{kfEmail}}</span>，将由专业的客户服务人员帮助您获取到最新版本的软件。</div>
+					</div>
+						
+			</div>
+		</div>
+		
+		<script src="../assets/js/index.js"></script>
+		<script src="../assets/js/jquery.js"></script>
+		<script src="../assets/js/vue.js"></script>
+		<script>
+			gotoChatGPT = function() {
+				window.location.href = "https://chat.openai.com/"
+			};
+			
+			gotoKfLink = function() {
+				window.location.href = "http://xkf.zhimakf.com/s/107176gz41"
+			};
+			
+			new Vue({
+				el: '#app',
+				data: {
+					mt: 1,
+					downloadLink: 'http://www.saiduna.com/download.html',
+					kfEmail: 'saidunyouxiang@gmail.com',
+					webLink: 'http://www.saiduna.com'
+				},
+				methods: {
+					changeMT(mt) {
+						this.mt = mt
+					},
+					gotoProblem(page){
+						window.location.href = "problem/"+page+".html"
+					},
+					gotoHelp(){
+						window.location.href = "../help.html"
+					},
+					gotoHome() {
+						window.location.href = "../index.html"
+					}
+				},
+				created: function() {
+				}
+			})
+		</script>
+	</body>
+</html>
