@@ -1,0 +1,198 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+section,
+header,
+footer,
+aside,
+ul,
+ol,
+li,
+table,
+tr,
+th,
+td,
+button,
+input,
+textarea,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+i,
+strong,
+p,
+span,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+th,
+i,
+input,
+textarea,
+button,
+select {
+    font-weight: normal;
+    font-style: normal;
+}
+
+ul,
+ol {
+    list-style: none;
+    vertical-align: top;
+}
+
+table,
+td,
+th {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input,
+button,
+select,
+textarea {
+    outline: none;
+    background: none;
+}
+
+textarea {
+    resize: none;
+}
+
+img,
+a img {
+    border: none;
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    font-size: 100px;
+}
+
+body {
+    /* height: 100%;   */
+    /* background: #F4F4F4; */
+    background: #fff;
+    width: 100%;
+    font-size: .14rem;
+
+}
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; */
+    width: 100%;
+    font-size: .14rem;
+    height: 100%;
+
+}
+
+.viewer-footer {
+    display: none;
+}
+
+.toast {
+    width: 60%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    position: fixed;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+    font-size: 17px;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header .nav {
+    height: 46px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+header .left {
+    width: 33%;
+}
+
+header .left img {
+    width: 20px;
+}
+
+header .center {
+    font-size: 18px;
+    color: #fff;
+}
+
+header .right {
+    width: 33%;
+    font-size: 14px;
+    color: #fff;
+    text-align: right;
+}
+
+/* PCç«¯ */
+@media screen and (min-width: 900px) {
+    html {
+        height: 100%;
+    }
+
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: auto !important;
+        height: 100%;
+        background: #fff;
+        /* padding-top:20px; */
+    }
+
+    #app {
+        background: #fff;
+        height: 100%;
+
+    }
+}
+
+/* ç§»åŠ¨ç«¯ */
+@media screen and (min-width: 700px) {
+    /* html {
+        font-size: 120px;
+    } */
+}
+
+.van-dialog__message {
+    text-align: center;
+}

@@ -1,0 +1,162 @@
+<html class="no-skrollr"><head>
+    <meta charset="utf-8">
+    <title>安卓安装教程</title>
+    <meta name="referrer" content="no-referrer">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="css/public.css" rel="stylesheet">
+    <style>
+        body {
+            background: #E8F0FF;
+            padding: 30px 15px 50px;
+        }
+        .header{
+            position: relative;
+        }
+        .header .back{
+            position: absolute;
+            left:15px;
+            top:50%;
+            transform: translateY(-50%);
+        }
+        .header .back img{
+            width:10px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #000;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        h1 span {
+            color: rgb(255, 0, 0);
+        }
+
+        ul {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        ul li {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        ul li a {
+            width: 100%;
+        }
+
+        ul li a img {
+            width: 100%;
+        }
+
+        .dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dialog .wraper {
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .dialog .wraper img {
+            width: 100%;
+        }
+
+        .dialog .wraper .btn {
+            position: absolute;
+            left: 50%;
+            bottom: 7%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 20%;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="back">
+            <img src="images/back.png" alt="">
+        </div>
+        <h1><span>*</span>手机报毒禁止安装解决办法<span>*</span></h1>
+    </div>
+
+    <ul>
+        <li>
+            <a href="cell1Page.html">
+                <img src="images/cell1.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="cell2Page.html">
+                <img src="images/cell2.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="hongMengPage.html">
+                <img src="images/cell4.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="huaWeiPage.html">
+                <img src="images/cell3.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="miPage.html">
+                <img src="images/cell5.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="oppoPage.html">
+                <img src="images/cell6.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="vivoPage.html">
+                <img src="images/cell7.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="meizuPage.html">
+                <img src="images/cell8.png" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="tengXunPage.html">
+                <img src="images/cell9.png?v=1" alt="">
+            </a>
+        </li>
+    </ul>
+    <!-- <div class="dialog">
+        <div class="wraper">
+            <img src="images/dialog.png" alt="">
+            <div class="btn"></div>
+        </div>
+    </div> -->
+    <script src="js/jquery.js"></script>
+    <script>
+        $(".dialog .wraper .btn").click(function () {
+            $(".dialog").hide();
+        });
+        $(".header .back").click(function () {
+            window.history.go(-1);
+        });
+    </script>
+
+
+</body></html>
